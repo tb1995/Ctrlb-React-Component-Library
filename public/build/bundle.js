@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -374,16 +374,16 @@ var app = (function () {
     			t3 = space();
     			a = element("a");
     			t4 = text(ctaText);
-    			attr_dev(h1_1, "class", "hero-heading svelte-a4r03w");
+    			attr_dev(h1_1, "class", "hero-heading svelte-1iwlk4");
     			add_location(h1_1, file, 11, 4, 266);
-    			attr_dev(p_1, "class", "hero-para svelte-a4r03w");
+    			attr_dev(p_1, "class", "hero-para svelte-1iwlk4");
     			add_location(p_1, file, 12, 4, 305);
     			attr_dev(a, "href", ctaUrl);
-    			attr_dev(a, "class", "hero-cta svelte-a4r03w");
+    			attr_dev(a, "class", "hero-cta svelte-1iwlk4");
     			add_location(a, file, 13, 4, 338);
-    			attr_dev(div0, "class", "text-container svelte-a4r03w");
+    			attr_dev(div0, "class", "text-container svelte-1iwlk4");
     			add_location(div0, file, 10, 4, 233);
-    			attr_dev(div1, "class", "hero-1-container svelte-a4r03w");
+    			attr_dev(div1, "class", "hero-1-container svelte-1iwlk4");
     			add_location(div1, file, 8, 0, 197);
     		},
     		l: function claim(nodes) {

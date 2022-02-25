@@ -57,12 +57,15 @@ const ctaUrl = "#"
     @include for-size(phone-only) {
                 font-size: 60px;
                 width: 100%;
+                text-align: center;
            }
 
 
     @include for-size(tablet-portrait-up) {
                 font-size: 50px;
-                max-width: 80%;
+                max-width: 77%;
+                text-align: left;
+
 
     }   
 
