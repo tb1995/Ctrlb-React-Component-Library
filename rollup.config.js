@@ -46,10 +46,7 @@ export default {
 				// enable run-time checks when not in production
 				dev: !production
 			},
-			preprocess: [
-		scss({  /** options */ })
-	]
-
+			preprocess: sveltePreprocess({ sourceMap: !production }),
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
