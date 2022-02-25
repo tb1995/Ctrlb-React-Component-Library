@@ -526,16 +526,16 @@ var app = (function () {
     			t3 = space();
     			a = element("a");
     			t4 = text(ctaText);
-    			attr_dev(h1_1, "class", "hero-heading svelte-jy7166");
+    			attr_dev(h1_1, "class", "hero-heading svelte-147pfaw");
     			add_location(h1_1, file$7, 11, 4, 266);
-    			attr_dev(p_1, "class", "hero-para svelte-jy7166");
+    			attr_dev(p_1, "class", "hero-para svelte-147pfaw");
     			add_location(p_1, file$7, 12, 4, 305);
     			attr_dev(a, "href", ctaUrl);
-    			attr_dev(a, "class", "hero-cta svelte-jy7166");
+    			attr_dev(a, "class", "hero-cta svelte-147pfaw");
     			add_location(a, file$7, 13, 4, 338);
-    			attr_dev(div0, "class", "text-container svelte-jy7166");
+    			attr_dev(div0, "class", "text-container svelte-147pfaw");
     			add_location(div0, file$7, 10, 4, 233);
-    			attr_dev(div1, "class", "hero-1-container svelte-jy7166");
+    			attr_dev(div1, "class", "hero-1-container svelte-147pfaw");
     			add_location(div1, file$7, 8, 0, 197);
     		},
     		l: function claim(nodes) {
@@ -617,11 +617,11 @@ var app = (function () {
     			div0 = element("div");
     			h1_1 = element("h1");
     			h1_1.textContent = `${h1}`;
-    			attr_dev(h1_1, "class", "hero-heading svelte-hsbuug");
+    			attr_dev(h1_1, "class", "hero-heading svelte-ogn23s");
     			add_location(h1_1, file$6, 10, 4, 139);
     			attr_dev(div0, "class", "text-container");
     			add_location(div0, file$6, 9, 4, 106);
-    			attr_dev(div1, "class", "hero-container svelte-hsbuug");
+    			attr_dev(div1, "class", "hero-container svelte-ogn23s");
     			add_location(div1, file$6, 8, 0, 73);
     		},
     		l: function claim(nodes) {
@@ -718,18 +718,18 @@ var app = (function () {
     			attr_dev(img, "alt", "");
     			attr_dev(img, "class", "info-img");
     			add_location(img, file$5, 11, 4, 543);
-    			attr_dev(div0, "class", "img-container svelte-sjpjuu");
+    			attr_dev(div0, "class", "img-container svelte-n2c5k8");
     			add_location(div0, file$5, 10, 0, 511);
-    			attr_dev(h2, "class", "info-heading svelte-sjpjuu");
+    			attr_dev(h2, "class", "info-heading svelte-n2c5k8");
     			add_location(h2, file$5, 14, 8, 647);
-    			attr_dev(p, "class", "info-para svelte-sjpjuu");
+    			attr_dev(p, "class", "info-para svelte-n2c5k8");
     			add_location(p, file$5, 15, 4, 695);
     			attr_dev(a, "href", infoCtaUrl);
-    			attr_dev(a, "class", "info-cta btn-style svelte-sjpjuu");
+    			attr_dev(a, "class", "info-cta btn-style svelte-n2c5k8");
     			add_location(a, file$5, 16, 4, 735);
-    			attr_dev(div1, "class", "info-text-container svelte-sjpjuu");
+    			attr_dev(div1, "class", "info-text-container svelte-n2c5k8");
     			add_location(div1, file$5, 13, 4, 605);
-    			attr_dev(div2, "class", "info-container svelte-sjpjuu");
+    			attr_dev(div2, "class", "info-container svelte-n2c5k8");
     			add_location(div2, file$5, 9, 0, 482);
     		},
     		l: function claim(nodes) {
@@ -841,16 +841,16 @@ var app = (function () {
     			t2 = space();
     			if (!src_url_equal(img.src, img_src_value = /*obj*/ ctx[1].imgUrl)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
-    			attr_dev(img, "class", "obj-img svelte-1g08bak");
+    			attr_dev(img, "class", "obj-img svelte-1tr0tyw");
     			add_location(img, file$4, 54, 8, 1110);
-    			attr_dev(p, "class", "title svelte-1g08bak");
+    			attr_dev(p, "class", "title svelte-1tr0tyw");
     			add_location(p, file$4, 56, 12, 1211);
-    			attr_dev(div0, "class", "text-container svelte-1g08bak");
+    			attr_dev(div0, "class", "text-container svelte-1tr0tyw");
     			add_location(div0, file$4, 55, 12, 1170);
 
     			attr_dev(div1, "class", "obj " + (/*obj*/ ctx[1].title === 'ThisIsInvisible123'
     			? 'invisible-obj'
-    			: '') + " svelte-1g08bak");
+    			: '') + " svelte-1tr0tyw");
 
     			add_location(div1, file$4, 53, 8, 1024);
     		},
@@ -898,7 +898,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div, "class", "grid-container svelte-1g08bak");
+    			attr_dev(div, "class", "grid-container svelte-1tr0tyw");
     			add_location(div, file$4, 51, 0, 962);
     		},
     		l: function claim(nodes) {
