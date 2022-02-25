@@ -6,6 +6,8 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import autoPreprocess from 'svelte-preprocess';
 import { scss } from 'svelte-preprocess';
+import sveltePreprocess from 'svelte-preprocess';
+
 
 
 
