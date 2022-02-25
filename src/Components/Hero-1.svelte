@@ -18,6 +18,8 @@ const ctaUrl = "#"
 
 <style type="text/scss">
 @import './public/scss/theme.scss';
+@import './public/scss/breakpoints.scss';
+
 
 .hero-1-container {
     height: 100vh;
@@ -26,6 +28,7 @@ const ctaUrl = "#"
     background-size: cover;
     display: flex;
     align-items: center;
+    filter: brightness(90%);
     
 }
 
@@ -34,15 +37,61 @@ const ctaUrl = "#"
     flex-direction: column;
     justify-content: center;
     margin-left: $body-left-margin;
+
+        @include for-size(phone-only) {
+            width: 90%;
+            margin-left: $body-left-margin;
+            margin-right: $body-right-margin;
+            align-items: center;
+
+        }
+
+
 }
 
 .hero-heading {
     color: $primary;
     max-width: 60%;
+
+
+    @include for-size(phone-only) {
+                font-size: 60px;
+                width: 100%;
+           }
+
+
+    @include for-size(tablet-portrait-up) {
+                font-size: 50px;
+                max-width: 80%;
+
+    }   
+
+    @include for-size(tablet-landscape-up) {
+                font-size: 80px;
+                max-width: 77%;
+
+
+    }
+
+    @include for-size(desktop-up) {
+                font-size: 100px;
+                max-width: 75%;
+    }
+
+    @include for-size(big-desktop-up) {
+                max-width: 60%; 
+                font-size: 120px;
+    }
+
 }
 
 .hero-para {
     color: $dark-grey;
+    @include for-size(phone-only) {
+                font-size: 24px;
+                width: 100%;
+                text-align: center;
+    }
 }
 
 .hero-cta {
@@ -58,4 +107,32 @@ const ctaUrl = "#"
   line-height: 60px;
   text-align: center;
 }
+
+
+@include for-size(small-phone-only) {
+.hero-heading {
+
+        }
+}
+
+@include for-size(large-mobile-up) {
+
+}
+
+@include for-size(tablet-portrait-up) {
+
+}
+
+@include for-size(tablet-landscape-up) {
+
+}
+
+@include for-size(desktop-up) {
+
+}
+
+@include for-size(big-desktop-up) {
+
+}
+
 </style>

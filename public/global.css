@@ -62,10 +62,13 @@ button:focus {
 }
 
 h1 {
-	font-size: 80px;
+	margin-bottom: 30px;
 }
 
 p {
+	margin-top: 0;
 	font-size: 24px;
+	margin-bottom: 30px;
+
 }
 

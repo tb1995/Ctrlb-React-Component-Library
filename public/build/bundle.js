@@ -374,16 +374,16 @@ var app = (function () {
     			t3 = space();
     			a = element("a");
     			t4 = text(ctaText);
-    			attr_dev(h1_1, "class", "hero-heading svelte-hmb99k");
+    			attr_dev(h1_1, "class", "hero-heading svelte-a4r03w");
     			add_location(h1_1, file, 11, 4, 266);
-    			attr_dev(p_1, "class", "hero-para svelte-hmb99k");
+    			attr_dev(p_1, "class", "hero-para svelte-a4r03w");
     			add_location(p_1, file, 12, 4, 305);
     			attr_dev(a, "href", ctaUrl);
-    			attr_dev(a, "class", "hero-cta svelte-hmb99k");
+    			attr_dev(a, "class", "hero-cta svelte-a4r03w");
     			add_location(a, file, 13, 4, 338);
-    			attr_dev(div0, "class", "text-container svelte-hmb99k");
+    			attr_dev(div0, "class", "text-container svelte-a4r03w");
     			add_location(div0, file, 10, 4, 233);
-    			attr_dev(div1, "class", "hero-1-container svelte-hmb99k");
+    			attr_dev(div1, "class", "hero-1-container svelte-a4r03w");
     			add_location(div1, file, 8, 0, 197);
     		},
     		l: function claim(nodes) {
