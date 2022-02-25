@@ -2,6 +2,7 @@
 import Hero_Fullscreen from "./Components/Hero-Fullscreen.svelte";
 import HeroHalfscreen from "./Components/Hero-Halfscreen.svelte";
 import Info_1 from "./Components/Info-1.svelte";
+import GridThreeColumns from "./Components/Product-Grid/Grid-Three-Columns/Grid-Three-Columns.svelte";
 import { Tabs, TabList, TabPanel, Tab } from './Components/Tabs/tabs';
 
 
@@ -9,6 +10,7 @@ import { Tabs, TabList, TabPanel, Tab } from './Components/Tabs/tabs';
 </script>
 
 <HeroHalfscreen></HeroHalfscreen>
+<GridThreeColumns></GridThreeColumns>
 <Tabs>
 	<TabList>
 		<Tab>one</Tab>
