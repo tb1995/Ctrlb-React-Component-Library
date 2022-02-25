@@ -72,13 +72,13 @@ const ctaUrl = "#"
     @include for-size(tablet-landscape-up) {
                 font-size: 80px;
                 max-width: 77%;
-
+        
 
     }
 
     @include for-size(desktop-up) {
                 font-size: 100px;
-                max-width: 75%;
+                max-width: 67%;
     }
 
     @include for-size(big-desktop-up) {
