@@ -4,13 +4,55 @@ import HeroHalfscreen from "./Components/Hero-Halfscreen.svelte";
 import Info_1 from "./Components/Info-1.svelte";
 import GridThreeColumns from "./Components/Product-Grid/Grid-Three-Columns/Grid-Three-Columns.svelte";
 import { Tabs, TabList, TabPanel, Tab } from './Components/Tabs/tabs';
+import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
 
 
 	export let name;
+	export let array = [
+    {
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+    },
+    {
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+    },
+    {
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+    },
+    {
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+    },
+    {
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+	},
+	{
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+    },
+    {
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+    },
+    {
+        title: "Here is a title",
+        imgUrl: "/img/icon.jpg"
+    },
+]
+
+let fourColumns = 4;
 </script>
 
 <HeroHalfscreen></HeroHalfscreen>
-<GridThreeColumns></GridThreeColumns>
+<ResponsiveGrid
+		array = {array}
+		numberOfColumns = {7}
+		objWidth={"200px"}
+		gridWidth={"100%"}
+	/>
 <Tabs>
 	<TabList>
 		<Tab>one</Tab>
