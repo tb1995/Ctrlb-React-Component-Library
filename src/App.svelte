@@ -6,22 +6,34 @@ import GridThreeColumns from "./Components/Product-Grid/Grid-Three-Columns/Grid-
 import { Tabs, TabList, TabPanel, Tab } from './Components/Tabs/tabs';
 import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
 import HeroFullscreen from "./Components/Hero-Fullscreen.svelte";
+import SpacedTab from './Components/Tabs-Spaced/Tab.svelte'
 
-
+	
 	export let name;
 	const imgDirectory = "/img/component-images/"
-	export let componentArray = {
-		heroes: [
-			{
-			title: "Hero Fullscreen",
-			description: "Hero with 100vh and with a CTA",
-			url: "",
-			imageUrl: imgDirectory + "hero-fullscreen.jpg",
-			dependencies: [],
-			listOfProps: []
-			}
-		],
-		grids: [
+	let activeItem = "Heroes"
+
+	const tabChange = (e) => {
+		activeItem = e.detail;
+	}
+
+	export let componentArray = [
+		{
+		label: "Heroes",
+		list: [
+				{
+					title: "Hero Fullscreen",
+					description: "Hero with 100vh and with a CTA",
+					url: "",
+					imageUrl: imgDirectory + "hero-fullscreen.jpg",
+					dependencies: [],
+					listOfProps: []
+				}
+			],
+		},
+		{
+		label: "Grids",
+		list: [
 				{
 			title: "Responsive Grid",
 			description: "Specify the number of columns and item width via the props",
@@ -31,13 +43,15 @@ import HeroFullscreen from "./Components/Hero-Fullscreen.svelte";
 			listOfProps: []
 			}
 		],
-		tabs: [],
-		infoSection: [],
-		navbars: [],
-		footers: [],
-		galleries: [],
-		forms: []
-	}
+		}
+		// tabs: [],
+		// infoSection: [],
+		// navbars: [],
+		// footers: [],
+		// galleries: [],
+		// forms: []
+	]
+	
 	export let array = [
     {
         title: "Here is a title",
@@ -104,6 +118,11 @@ let fourColumns = 4;
 	</TabPanel>
 </Tabs>
 
+<SpacedTab 
+	componentArray = {componentArray}
+	activeItem = {activeItem}
+	on:tabChange={tabChange}
+/>
 
 <style>
 	
