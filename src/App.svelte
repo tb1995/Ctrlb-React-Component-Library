@@ -1,128 +1,83 @@
 <script>
 import Hero_Fullscreen from "./Components/Hero-Fullscreen.svelte";
 import HeroHalfscreen from "./Components/Hero-Halfscreen.svelte";
-import Info_1 from "./Components/Info-1.svelte";
-import GridThreeColumns from "./Components/Product-Grid/Grid-Three-Columns/Grid-Three-Columns.svelte";
-import { Tabs, TabList, TabPanel, Tab } from './Components/Tabs/tabs';
-import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
 import HeroFullscreen from "./Components/Hero-Fullscreen.svelte";
-import SpacedTab from './Components/Tabs-Spaced/Tab.svelte'
+import Library from "./Library.svelte";
+import { Router, Route, Link } from "svelte-navigator";
+import {masterComponentArray} from "./data.js"
+import Info_1 from "./Components/Info-1.svelte";
+import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
+import Tab from "./Components/Tabs-Spaced/Tab.svelte";
+import Navbar from "./Components/Navbar-Traditional.svelte/navbar.svelte";
 
-	
-	export let name;
-	const imgDirectory = "/img/component-images/"
-	let activeItem = "Heroes"
 
-	const tabChange = (e) => {
+
+const tabChange = (e) => {
 		activeItem = e.detail;
 	}
 
-	export let componentArray = [
-		{
-		label: "Heroes",
-		list: [
-				{
-					title: "Hero Fullscreen",
-					description: "Hero with 100vh and with a CTA",
-					url: "",
-					imageUrl: imgDirectory + "hero-fullscreen.jpg",
-					dependencies: [],
-					listOfProps: []
-				}
-			],
-		},
-		{
-		label: "Grids",
-		list: [
-				{
-			title: "Responsive Grid",
-			description: "Specify the number of columns and item width via the props",
-			url: "",
-			imageUrl: imgDirectory + "hero-fullscreen.jpg",
-			dependencies: [],
-			listOfProps: []
-			}
-		],
-		}
-		// tabs: [],
-		// infoSection: [],
-		// navbars: [],
-		// footers: [],
-		// galleries: [],
-		// forms: []
-	]
-	
-	export let array = [
-    {
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-    },
-    {
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-    },
-    {
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-    },
-    {
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-    },
-    {
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-	},
-	{
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-    },
-    {
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-    },
-    {
-        title: "Here is a title",
-        imgUrl: "/img/icon.jpg"
-    },
-]
 
-let fourColumns = 4;
 </script>
 
-<HeroFullscreen />
-<HeroHalfscreen></HeroHalfscreen>
-<ResponsiveGrid
+<!-- <ResponsiveGrid
 		array = {array}
 		numberOfColumns = {7}
 		objWidth={"200px"}
 		gridWidth={"100%"}
-	/>
-<Tabs>
-	<TabList>
-		<Tab>one</Tab>
-		<Tab>two</Tab>
-		<Tab>three</Tab>
-	</TabList>
+	/> -->
+<Library />
 
-	<TabPanel>
-		<h2>First panel</h2>
-	</TabPanel>
+<Router>
 
-	<TabPanel>
-		<h2>Second panel</h2>
-	</TabPanel>
+	<main>
+	<!-- {#each masterComponentArray as category}
+	let List = category.list
+		{#each List as component}
+		<Route path="{component.url}">
 
-	<TabPanel>
-		<h2>Third panel</h2>
-	</TabPanel>
-</Tabs>
+		</Route>
+		{/each}
 
-<SpacedTab 
-	componentArray = {componentArray}
-	activeItem = {activeItem}
-	on:tabChange={tabChange}
-/>
+	{/each} -->
+    
+    <Route path="/Heroes/Fullscreen">
+      <HeroFullscreen />
+	</Route>
+	
+	<Route path="/Heroes/Halfscreen">
+      <HeroHalfscreen />
+    </Route>
+
+	<Route path="/Info/1">
+      <Info_1 />
+	</Route>
+	
+	<Route path="/Grids/Responsive">
+	  <ResponsiveGrid 
+		array = {masterComponentArray.at(0).list}
+		numberOfColumns = {2}
+		objWidth={"200px"}
+        gridWidth={"100%"}
+	  />
+	</Route>
+	
+	<Route path="/Tabs/Centered">
+    	<Tab 
+			componentArray = {masterComponentArray}
+			activeItem = {masterComponentArray.at(0).label}
+			on:tabChange={tabChange}
+		/>
+	</Route>
+	
+	<Route path="/Navbar/Traditional">
+      <Navbar />
+	</Route>
+	
+
+  </main>
+
+
+</Router>
 
 <style>
 	

@@ -6,11 +6,6 @@
     export let componentArray;
     export let activeItem;
 
-    console.log(componentArray)
-    componentArray.forEach(element => {
-        console.log(element.label)
-    });
-
 </script>
 
 <div class="tabs">
@@ -22,6 +17,7 @@
      {/each}
 </ul>
 </div>
+
 
 <style type="text/scss">
 @import './public/scss/theme.scss';

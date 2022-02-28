@@ -41,7 +41,7 @@ h2 {
 
 h1 {
 
-       @include for-size(phone-only) {
+    @include for-size(phone-only) {
         font-size: 40px;
         text-align: center;
     }

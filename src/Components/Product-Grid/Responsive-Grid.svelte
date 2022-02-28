@@ -1,7 +1,21 @@
 <script>
 
 
-    	import { beforeUpdate, afterUpdate } from 'svelte';
+        import { beforeUpdate, afterUpdate } from 'svelte';
+        import { Router, Route, Link } from "svelte-navigator";
+        import HeroHalfscreen from "../Hero-Halfscreen.svelte"
+    import HeroFullscreen from "../Hero-Fullscreen.svelte";
+    import {masterComponentArray} from "../../data.js"
+    import Info_1 from "../Info-1.svelte";
+    import Tab from "../Tabs-Spaced/Tab.svelte"
+
+
+const tabChange = (e) => {
+		activeItem = e.detail;
+	}
+
+
+
 
 export let array;
 export let numberOfColumns;
@@ -39,8 +53,8 @@ let flexWidth = (100 / numberOfColumns) + "%";
         console.log("Here " + i);
         array.push({
         title: "ThisIsInvisible123",
-        imgUrl: "/img/icon.jpg",
-        invisible: true
+        invisible: true,
+        url: ""
     })
     }
 
@@ -48,18 +62,54 @@ let flexWidth = (100 / numberOfColumns) + "%";
 
 
 </script>
-
+<Router>
 <div class="grid-container" style="width: {gridWidth}">
     {#each array as obj}
-<div class="obj {obj.title === 'ThisIsInvisible123' ? 'invisible-obj' : ''}" style="flex: 0 1 {flexWidth}">
-<img src="{obj.imgUrl}" alt="" class="obj-img" style="width: {gridWidth}; height: {gridWidth}">
+    
+        <div class="obj {obj.title === 'ThisIsInvisible123' ? 'invisible-obj' : ''}" style="flex: 0 1 {flexWidth}">
+
+        <img src="{obj.imgUrl}" alt="" class="obj-img" style="width: {gridWidth}; height: {gridWidth}">
+
             <div class="text-container" style="width: {gridWidth}">
-            <p class="title">{obj.title}</p>
+
+            <Link to="{obj.url}"> <p class="title">{obj.title}</p> </Link>
+            
             </div>
         </div>
     {/each}
 </div>
+<!-- 
+   <Route path="/Heroes/Fullscreen">
+      <HeroFullscreen />
+	</Route>
+	
+	<Route path="/Heroes/Halfscreen">
+      <HeroHalfscreen />
+    </Route>
 
+	<Route path="/Info/1">
+      <Info_1 />
+	</Route>
+	
+	<Route path="/Grids/Responsive">
+	  <ResponsiveGrid 
+		array = {masterComponentArray.at(0).list}
+		numberOfColumns = {2}
+		objWidth={"200px"}
+        gridWidth={"100%"}
+      />
+      
+	</Route>
+	
+	<Route path="/Tabs/Centered">
+    	<Tab 
+			componentArray = {masterComponentArray}
+			activeItem = {masterComponentArray.at(0).label}
+			on:tabChange={tabChange}
+		/>
+	</Route>
+	 -->
+</Router>
 
 <style type="text/scss">
 @import './public/scss/theme.scss';
@@ -94,14 +144,14 @@ let flexWidth = (100 / numberOfColumns) + "%";
         justify-content: center;
         background-color: $light-grey;
         border: 1px solid $primary;
-        min-width: 200px;
+        min-width: 250px;
     }
 
     .obj-img {
         // width: $column-width;
         // height: $column-width;
-        min-width: 200px;
-        min-height: 200px;
+        min-width: 250px;
+        min-height: 250px;
     }
 
     .title {
