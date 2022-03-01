@@ -14,5 +14,11 @@
     @media (min-width: $tablet-landscape-upper-boundary) { @content; }
   } @else if $range == big-desktop-up {
     @media (min-width: $desktop-upper-boundary) { @content; }
+  } @else if $range == tablet-portrait-down {
+      @media (max-width: $tablet-portrait-upper-boundary) { @content;}
+  } @else if $range == tablet-landscape-down {
+      @media (max-width: $tablet-landscape-upper-boundary) { @content;}
   }
+
 }
+

@@ -2,7 +2,7 @@
 
 $primary: #eeba2b;
 $secondary: #ffffff;
-$accent: #ffffff;
+$accent: #ff3333;
 $white: #fff;
 
 $light-grey: #f4f6fc;
@@ -87,4 +87,8 @@ p {
   /* margin: 0 auto; */
   line-height: 60px;
   text-align: center;
+}
+
+a:hover {
+    color: $accent;
 }

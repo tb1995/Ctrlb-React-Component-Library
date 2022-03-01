@@ -1,16 +1,23 @@
 <script>
+import RectangularButton from "../Widgets/Buttons/Rectangular-Button.svelte";
 
-const h1 = "CtrlB Component Library"
-const p = ""
+
+export let title;
+export let subheading;
+export let buttonText;
+export let buttonUrl;
 
 </script>
 
 
 <div class="hero-container">
-    <div class="text-container">
-    <h1 class="hero-heading">{h1}</h1>
+    <h1 class="hero-heading">{title}</h1>
+    <p class="hero-subtext">{subheading}</p>
+    <RectangularButton 
+    {buttonText}
+    {buttonUrl}
+    />
 
-    </div>
 </div>
 
 <style type="text/scss">
