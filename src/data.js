@@ -77,6 +77,14 @@
                     imgUrl: imgDirectory + "info-1.png",
                     dependencies: [],
                     listOfProps: []
+				},
+				 {
+                    title: "Info section 2x2 Grids",
+                    description: "Has tiny text and different styled button, with 2x2 Grid",
+                    url: "/Info/Grids",
+                    imgUrl: imgDirectory + "info-1.png",
+                    dependencies: [],
+                    listOfProps: []
                 }
             ]
 		},
@@ -113,6 +121,27 @@
                     title: "Four Column Footer",
                     description: "Four Column Footer",
                     url: "/Footers/Column-4",
+                    imgUrl: imgDirectory + "Centered-Tabs.png",
+                    dependencies: [],
+                    listOfProps: []
+                }
+            ]
+		},
+		{
+		label: "Banners",
+		list: [
+                {
+                    title: "Only Button",
+                    description: "Contains only a singular button",
+                    url: "/Banners/OnlyButton",
+                    imgUrl: imgDirectory + "Centered-Tabs.png",
+                    dependencies: [],
+                    listOfProps: []
+				},
+				{
+                    title: "Paragraph and Button",
+                    description: "Contains a paragraph and a button",
+                    url: "/Banners/Paragraph-Button",
                     imgUrl: imgDirectory + "Centered-Tabs.png",
                     dependencies: [],
                     listOfProps: []
@@ -221,3 +250,22 @@
 				},
 				
 			]
+
+	export let fourGrids = [
+		{
+			heading: "I am a fact",
+			paragraph: "Lorem ipsum dolor sit amet"
+		},
+		{
+			heading: "I am a fact",
+			paragraph: "Lorem ipsum dolor sit amet"
+		},
+		{
+			heading: "I am a fact",
+			paragraph: "Lorem ipsum dolor sit amet"
+		},
+		{
+			heading: "I am a fact",
+			paragraph: "Lorem ipsum dolor sit amet"
+		},
+	]

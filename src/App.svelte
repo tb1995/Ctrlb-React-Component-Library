@@ -4,7 +4,7 @@ import HeroHalfscreen from "./Components/Hero-Halfscreen.svelte";
 import HeroFullscreen from "./Components/Hero-Fullscreen.svelte";
 import Library from "./Library.svelte";
 import { Router, Route, Link } from "svelte-navigator";
-import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList} from "./data.js"
+import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList, fourGrids} from "./data.js"
 import Info_1 from "./Components/Info-1.svelte";
 import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
 import Tab from "./Components/Tabs-Spaced/Tab.svelte";
@@ -14,6 +14,9 @@ import ResponsiveGridMoreInfo from "./Components/Product-Grid/Responsive-Grid-Mo
 import Info_1Alt from "./Components/Info-Sections/Info-1-Alt.svelte";
 import Info_1Alt_2 from "./Components/Info-Sections/Info-1-Alt-2.svelte";
 import ResponsiveGridIcons from "./Components/Product-Grid/Responsive-Grid-Icons.svelte";
+import Info_4Grid from "./Components/Info-Sections/Info-4-Grid.svelte";
+import OnlyButton from "./Components/Banners/Only-Button.svelte";
+import ParagraphButton from "./Components/Banners/Paragraph-Button.svelte";
 
 
 
@@ -98,6 +101,18 @@ const tabChange = (e) => {
 			imgAlt=""
 		/>
 	</Route>
+
+	<Route path="/Info/Grids">
+		<Info_4Grid
+		infoHeading="So much more than just a cafe"
+		tinyTopText="odd little bit of text"
+		infoPara="Kettle'e was started by the talented team of foodies at Kabab & Curry to expand their culinary horizons with medleys of different cuisines along with Indian and Pakistani food. Set in a picturesque setting, the cafe has become a mainstay in the Santa Clara area and has grown a unique fan following."
+		buttonText="About Us"
+		buttonUrl="#"
+		fourGrids={fourGrids}
+/>
+
+	</Route>
 	
 	<Route path="/Grids/Responsive">
 	  <ResponsiveGrid 
@@ -150,10 +165,26 @@ const tabChange = (e) => {
 				/>
 	</Route>
 
-	
+	<Route path="/Banners/OnlyButton">
+		<OnlyButton 
+			buttonText = "I am a CTA"
+			buttonUrl = "#"
+		/>
+	</Route>
+
+	<Route path="/Banners/Paragraph-Button">
+		<ParagraphButton
+		buttonText = "I am a CTA"
+		buttonUrl = "#"
+		paragraph = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+/>
+	</Route>
+
 	
 	</main>
 </Router>
+
+
 
 <style>
 
