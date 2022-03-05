@@ -17,6 +17,7 @@ import ResponsiveGridIcons from "./Components/Product-Grid/Responsive-Grid-Icons
 import Info_4Grid from "./Components/Info-Sections/Info-4-Grid.svelte";
 import OnlyButton from "./Components/Banners/Only-Button.svelte";
 import ParagraphButton from "./Components/Banners/Paragraph-Button.svelte";
+import Form_1 from "./Components/Forms/Form-1.svelte";
 
 
 
@@ -184,6 +185,7 @@ const tabChange = (e) => {
 	</main>
 </Router>
 
+<Form_1></Form_1>
 
 
 <style>
