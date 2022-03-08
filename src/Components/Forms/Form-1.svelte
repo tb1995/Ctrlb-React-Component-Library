@@ -1,13 +1,15 @@
 <script>
   import {fly, fade } from 'svelte/transition';	
+  import {validateName, validateEmail, validatePhone} from '../../validation';
   export let formTitle = "Form Title"
   export let formMessage = "Send us a message and our team will be in touch"
   export let sendToEmail;
+  
 	let hasError = false;
 	let isSuccessVisible = false;
   let submitted = false;
   const emailPattern =     /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  const mobilePattern =  /^(\\d{1,3}[- ]?)?\d{10}$/
+  const mobilePattern =  /^\+(?:[0-9]●?){6,14}[0-9]$/
 
 	
   const errMessage = "All the fields are mandatory";		
@@ -38,35 +40,49 @@
   let valid = false;
   
   
-  function validate() {
-    if(fields.firstName.length < 1) {
+  function validateFirstName() {
+
+    if(validateName(fields.firstName)) {
+        errorsValid.firstNameValid = true
+    } else {
       errorsValid.firstNameValid = false
-    } else {
-      errorsValid.firstNameValid = true
-
-    }
-
-      if(fields.lastName.length < 1) {
-      errorsValid.lastNameValid = false
-    } else {
-      errorsValid.lastNameValid = true
-    }
-
-    if(!emailPattern.test(fields.email)) {
-      errorsValid.emailValid = false
-    } else {
-      errorsValid.emailValid = true
-    }
-
-    if(!mobilePattern.test(fields.phoneNumber)) {
-      errorsValid.phoneNumberValid = false
-    } else {
-      errorsValid.phoneNumberValid = true
     }
   }
 
-	function handleSubmit(e) {
+  function validateLastName() {
 
+    if(validateName(fields.lastName)) {
+        errorsValid.lastNameValid = true
+    } else {
+      errorsValid.lastNameValid = false
+    }
+
+  }
+
+  function validateEmailAddress() {
+
+    if(validateEmail(fields.email)) {
+        errorsValid.emailValid = true
+    } else {
+      errorsValid.emailValid = false
+    }
+  }
+
+
+
+  function validatePhoneNumber() {
+
+    if(validatePhone(fields.phoneNumber)) {
+      errorsValid.phoneNumberValid = true
+    } else {
+      errorsValid.phoneNumberValid = false
+    }
+  }
+
+
+
+	function handleSubmit(e) {
+  
     valid = true;
     if(fields.firstName.length < 1) {
       errors.firstName = "Please enter your first name."
@@ -94,7 +110,6 @@
 	}
 </script>
 
-<h2>Take survey</h2>	
 
 {#if hasError == true}
 		<p class="error-alert">{errMessage}</p>
@@ -105,24 +120,23 @@
 {/if}
 
 <div class="container">
-
   <form id="surveyForm" class="mt-4" class:submitted on:submit|preventDefault={handleSubmit}>
     <h3>{formTitle}</h3>
   <h4>{formMessage}</h4>
 		<div class="form-group">
-    <input type="text" class="form-control {errorsValid.firstNameValid ? '' : 'invalid'}" bind:value="{fields.firstName}" on:keyup="{validate}" placeholder="First name" required>
+    <input type="text" class="form-control {errorsValid.firstNameValid ? '' : 'invalid'}" bind:value="{fields.firstName}" on:keyup="{validateFirstName}" placeholder="First name" required>
 		</div>
 
 		<div class="form-group">
-    <input type="text" class="form-control {errorsValid.lastNameValid ? '' : 'invalid'}" bind:value="{fields.lastName}" on:keyup="{validate}"  placeholder="Last name" required>
+    <input type="text" class="form-control {errorsValid.lastNameValid ? '' : 'invalid'}" bind:value="{fields.lastName}" on:keyup="{validateLastName}"  placeholder="Last name" required>
     </div> 
     
     <div class="form-group">
-			<input type="email" class="form-control {errorsValid.emailValid ? '' : 'invalid'}" bind:value="{fields.email}" on:keyup="{validate}"  placeholder="Email" required>
+			<input type="email" class="form-control {errorsValid.emailValid ? '' : 'invalid'}" bind:value="{fields.email}" on:keyup="{validateEmailAddress}"  placeholder="Email" required>
     </div> 
     
     <div class="form-group">
-			<input type="text" class="form-control {errorsValid.phoneNumberValid ? '' : 'invalid'}" bind:value="{fields.phoneNumber}" on:keyup="{validate}"  placeholder="Contact number" required>
+			<input type="text" class="form-control {errorsValid.phoneNumberValid ? '' : 'invalid'}" bind:value="{fields.phoneNumber}" on:keyup="{validatePhoneNumber}"  placeholder="Contact number" required>
     </div> 
     
     <div class="form-group">

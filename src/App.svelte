@@ -4,7 +4,7 @@ import HeroHalfscreen from "./Components/Hero-Halfscreen.svelte";
 import HeroFullscreen from "./Components/Hero-Fullscreen.svelte";
 import Library from "./Library.svelte";
 import { Router, Route, Link } from "svelte-navigator";
-import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList, fourGrids} from "./data.js"
+import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList, fourGrids, images, kncImages} from "./data.js"
 import Info_1 from "./Components/Info-1.svelte";
 import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
 import Tab from "./Components/Tabs-Spaced/Tab.svelte";
@@ -18,6 +18,8 @@ import Info_4Grid from "./Components/Info-Sections/Info-4-Grid.svelte";
 import OnlyButton from "./Components/Banners/Only-Button.svelte";
 import ParagraphButton from "./Components/Banners/Paragraph-Button.svelte";
 import Form_1 from "./Components/Forms/Form-1.svelte";
+import FullLengthGallery from "./Components/Galleries/Full-Length-Gallery.svelte";
+import KnCStyleGallery from "./Components/Galleries/KnC-Style-Gallery.svelte";
 
 
 
@@ -181,11 +183,31 @@ const tabChange = (e) => {
 />
 	</Route>
 
+	<Route path="/Forms/Form-1"> 
+		<Form_1></Form_1>
+	</Route>
+
+	<Route path="/Galleries/Basic">
+		<FullLengthGallery 
+		images = {images}
+		numberOfColumns = {4}
+		objWidth={"200px"}
+		gridWidth={"90%"}
+		/>
+	</Route>
 	
 	</main>
 </Router>
 
-<Form_1></Form_1>
+	<KnCStyleGallery 
+		images = {kncImages}
+		numberOfColumns = {5}
+		objWidth={"200px"}
+		gridWidth={"90%"}
+		imageWidth={"300px"}
+	/>
+
+
 
 
 <style>
