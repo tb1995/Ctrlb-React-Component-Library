@@ -20,6 +20,7 @@ import ParagraphButton from "./Components/Banners/Paragraph-Button.svelte";
 import Form_1 from "./Components/Forms/Form-1.svelte";
 import FullLengthGallery from "./Components/Galleries/Full-Length-Gallery.svelte";
 import KnCStyleGallery from "./Components/Galleries/KnC-Style-Gallery.svelte";
+import InfoWithForm from "./Components/Info-Sections/Info-With-Form.svelte";
 
 
 
@@ -195,18 +196,29 @@ const tabChange = (e) => {
 		gridWidth={"90%"}
 		/>
 	</Route>
-	
-	</main>
-</Router>
 
-	<KnCStyleGallery 
+	<Route path="/Galleries/Basic">
+		<KnCStyleGallery 
 		images = {kncImages}
 		numberOfColumns = {5}
 		objWidth={"200px"}
 		gridWidth={"90%"}
 		imageWidth={"300px"}
 	/>
+	</Route>
+	
+	</main>
+</Router>
 
+	<InfoWithForm
+		infoHeading="So much more than just a cafe"
+		tinyTopText="odd little bit of text"
+		infoPara="Kettle'e was started by the talented team of foodies at Kabab & Curry to expand their culinary horizons with medleys of different cuisines along with Indian and Pakistani food. Set in a picturesque setting, the cafe has become a mainstay in the Santa Clara area and has grown a unique fan following."
+		buttonText="About Us"
+		buttonUrl="#"
+		imgUrl="/img/icon.jpg"
+		imgAlt=""
+	/>
 
 
 
