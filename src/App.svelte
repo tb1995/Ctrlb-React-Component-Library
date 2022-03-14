@@ -21,13 +21,30 @@ import Form_1 from "./Components/Forms/Form-1.svelte";
 import FullLengthGallery from "./Components/Galleries/Full-Length-Gallery.svelte";
 import KnCStyleGallery from "./Components/Galleries/KnC-Style-Gallery.svelte";
 import InfoWithForm from "./Components/Info-Sections/Info-With-Form.svelte";
+import { createClient } from "contentful"
+import createContentfulAPI from "../node_modules/contentful-resolve-response"
+import ContentfulEvents from "./Components/Test-Headless-CMS/Contentful-Events.svelte";
 
 
-
+let events = [];
 
 const tabChange = (e) => {
 		activeItem = e.detail;
 	}
+
+
+var client = createClient({
+  space: 'voutmqui4m2l',
+  accessToken: 'Pch2QB-Irp5JmCIl0DTH_7wCMNWZtNQe5oFsM7CYRo8',
+});
+
+
+const res = client.getEntries({content_type: 'events'}).then(function (event) {
+  // logs the entry metadata
+//   console.log(event.items);
+  events = event.items;
+  // logs the field with ID title
+});
 
 
 </script>
@@ -206,10 +223,8 @@ const tabChange = (e) => {
 		imageWidth={"300px"}
 	/>
 	</Route>
-	
-	</main>
-</Router>
 
+	<Route path="/Info/Form">
 	<InfoWithForm
 		infoHeading="So much more than just a cafe"
 		tinyTopText="odd little bit of text"
@@ -220,6 +235,17 @@ const tabChange = (e) => {
 		imgAlt=""
 	/>
 
+	</Route>
+	
+	</main>
+</Router>
+
+	<ContentfulEvents
+		numberOfColumns = {4}
+		objWidth={"200px"}
+		gridWidth={"100%"}
+
+	/>
 
 
 <style>
