@@ -4,7 +4,7 @@ import HeroHalfscreen from "./Components/Hero-Halfscreen.svelte";
 import HeroFullscreen from "./Components/Hero-Fullscreen.svelte";
 import Library from "./Library.svelte";
 import { Router, Route, Link } from "svelte-navigator";
-import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList, fourGrids} from "./data.js"
+import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList, fourGrids, images, kncImages} from "./data.js"
 import Info_1 from "./Components/Info-1.svelte";
 import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
 import Tab from "./Components/Tabs-Spaced/Tab.svelte";
@@ -17,13 +17,34 @@ import ResponsiveGridIcons from "./Components/Product-Grid/Responsive-Grid-Icons
 import Info_4Grid from "./Components/Info-Sections/Info-4-Grid.svelte";
 import OnlyButton from "./Components/Banners/Only-Button.svelte";
 import ParagraphButton from "./Components/Banners/Paragraph-Button.svelte";
+import Form_1 from "./Components/Forms/Form-1.svelte";
+import FullLengthGallery from "./Components/Galleries/Full-Length-Gallery.svelte";
+import KnCStyleGallery from "./Components/Galleries/KnC-Style-Gallery.svelte";
+import InfoWithForm from "./Components/Info-Sections/Info-With-Form.svelte";
+import { createClient } from "contentful"
+import createContentfulAPI from "../node_modules/contentful-resolve-response"
+import ContentfulEvents from "./Components/Test-Headless-CMS/Contentful-Events.svelte";
 
 
-
+let events = [];
 
 const tabChange = (e) => {
 		activeItem = e.detail;
 	}
+
+
+var client = createClient({
+  space: 'voutmqui4m2l',
+  accessToken: 'Pch2QB-Irp5JmCIl0DTH_7wCMNWZtNQe5oFsM7CYRo8',
+});
+
+
+const res = client.getEntries({content_type: 'events'}).then(function (event) {
+  // logs the entry metadata
+//   console.log(event.items);
+  events = event.items;
+  // logs the field with ID title
+});
 
 
 </script>
@@ -180,10 +201,51 @@ const tabChange = (e) => {
 />
 	</Route>
 
+	<Route path="/Forms/Form-1"> 
+		<Form_1></Form_1>
+	</Route>
+
+	<Route path="/Galleries/Basic">
+		<FullLengthGallery 
+		images = {images}
+		numberOfColumns = {4}
+		objWidth={"200px"}
+		gridWidth={"90%"}
+		/>
+	</Route>
+
+	<Route path="/Galleries/Basic">
+		<KnCStyleGallery 
+		images = {kncImages}
+		numberOfColumns = {5}
+		objWidth={"200px"}
+		gridWidth={"90%"}
+		imageWidth={"300px"}
+	/>
+	</Route>
+
+	<Route path="/Info/Form">
+	<InfoWithForm
+		infoHeading="So much more than just a cafe"
+		tinyTopText="odd little bit of text"
+		infoPara="Kettle'e was started by the talented team of foodies at Kabab & Curry to expand their culinary horizons with medleys of different cuisines along with Indian and Pakistani food. Set in a picturesque setting, the cafe has become a mainstay in the Santa Clara area and has grown a unique fan following."
+		buttonText="About Us"
+		buttonUrl="#"
+		imgUrl="/img/icon.jpg"
+		imgAlt=""
+	/>
+
+	</Route>
 	
 	</main>
 </Router>
 
+	<ContentfulEvents
+		numberOfColumns = {4}
+		objWidth={"200px"}
+		gridWidth={"100%"}
+
+	/>
 
 
 <style>

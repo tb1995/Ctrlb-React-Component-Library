@@ -147,6 +147,19 @@
                     listOfProps: []
                 }
             ]
+		},
+		{
+		label: "Forms",
+		list: [
+                {
+                    title: "Form-1",
+                    description: "Simple Form",
+                    url: "/Forms/Form-1",
+                    imgUrl: imgDirectory + "Centered-Tabs.png",
+                    dependencies: [],
+                    listOfProps: []
+				},
+            ]
         }
 
 	]
@@ -268,4 +281,85 @@
 			heading: "I am a fact",
 			paragraph: "Lorem ipsum dolor sit amet"
 		},
+	]
+
+
+	export let images = [
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+		{
+			src: "/img/icon.jpg",
+			alt: "image alt"
+		},
+	]
+
+
+	export let kncImages = [
+		{
+			src: "/img/sample-images/Santa-Clara.jpg",
+			alt: "image alt",
+			caption: "Santa Clara"
+		},
+		{
+			src: "/img/sample-images/Cupertino.jpg",
+			alt: "image alt",
+			caption: "Cupertino"
+		},
+		{
+			src: "/img/sample-images/MCA-Mosque.jpg",
+			alt: "image alt",
+			caption: "MCA Mosque"
+		},
+		{
+			src: "/img/sample-images/Santa-Clara-Kettlee.jpg",
+			alt: "image alt",
+			caption: "Santa Clara Kettlee"
+		},
+		{
+			src: "/img/sample-images/Catering.jpg",
+			alt: "image alt",
+			caption: "Catering"
+		}
 	]
