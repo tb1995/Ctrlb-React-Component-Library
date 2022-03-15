@@ -85,6 +85,22 @@
                     imgUrl: imgDirectory + "info-1.png",
                     dependencies: [],
                     listOfProps: []
+				},
+				{
+                    title: "Info section With Form",
+                    description: "Has a form with the info section",
+                    url: "/Info/Form",
+                    imgUrl: imgDirectory + "info-1.png",
+                    dependencies: [],
+                    listOfProps: []
+				},
+				{
+                    title: "Left Right Sections",
+                    description: "Has responsive left right sections",
+                    url: "/Info/Left-Right",
+                    imgUrl: imgDirectory + "info-1.png",
+                    dependencies: [],
+                    listOfProps: []
                 }
             ]
 		},

@@ -24,6 +24,7 @@ import InfoWithForm from "./Components/Info-Sections/Info-With-Form.svelte";
 import { createClient } from "contentful"
 import createContentfulAPI from "../node_modules/contentful-resolve-response"
 import ContentfulEvents from "./Components/Test-Headless-CMS/Contentful-Events.svelte";
+import LeftRightSection from "./Components/Info-Sections/Left-Right-Section.svelte";
 
 
 let events = [];
@@ -234,18 +235,28 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 		imgUrl="/img/icon.jpg"
 		imgAlt=""
 	/>
+	</Route>
+
+	<Route path="/Info/Left-Right">
+		
+		<LeftRightSection />
+
 
 	</Route>
-	
-	</main>
-</Router>
 
+
+	<Route path="/contentful">
 	<ContentfulEvents
 		numberOfColumns = {4}
 		objWidth={"200px"}
 		gridWidth={"100%"}
 
 	/>
+	</Route>
+	
+	</main>
+</Router>
+
 
 
 <style>
