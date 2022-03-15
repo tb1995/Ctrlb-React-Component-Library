@@ -4072,7 +4072,20 @@ var app = (function () {
                         listOfProps: []
     				},
                 ]
-            }
+    		},
+    		{
+    			label: "Contentful",
+    			list: [
+    				{
+    					title: "Contentful Events",
+                        description: "Events coming from eventful",
+                        url: "/contentful/events",
+                        imgUrl: imgDirectory$1 + "Centered-Tabs.png",
+                        dependencies: [],
+                        listOfProps: []
+    				}
+    			]
+    		}
 
     	];
     	
@@ -19583,7 +19596,7 @@ var app = (function () {
     	return block;
     }
 
-    // (248:1) <Route path="/contentful">
+    // (248:1) <Route path="/contentful/events">
     function create_default_slot_1(ctx) {
     	let contentfulevents;
     	let current;
@@ -19624,7 +19637,7 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(248:1) <Route path=\\\"/contentful\\\">",
+    		source: "(248:1) <Route path=\\\"/contentful/events\\\">",
     		ctx
     	});
 
@@ -19859,7 +19872,7 @@ var app = (function () {
 
     	route20 = new Route$1({
     			props: {
-    				path: "/contentful",
+    				path: "/contentful/events",
     				$$slots: { default: [create_default_slot_1] },
     				$$scope: { ctx }
     			},

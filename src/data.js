@@ -176,7 +176,20 @@
                     listOfProps: []
 				},
             ]
-        }
+		},
+		{
+			label: "Contentful",
+			list: [
+				{
+					title: "Contentful Events",
+                    description: "Events coming from eventful",
+                    url: "/contentful/events",
+                    imgUrl: imgDirectory + "Centered-Tabs.png",
+                    dependencies: [],
+                    listOfProps: []
+				}
+			]
+		}
 
 	]
 	

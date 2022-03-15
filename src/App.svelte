@@ -245,7 +245,7 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 	</Route>
 
 
-	<Route path="/contentful">
+	<Route path="/contentful/events">
 	<ContentfulEvents
 		numberOfColumns = {4}
 		objWidth={"200px"}
