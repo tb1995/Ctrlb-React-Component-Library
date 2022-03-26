@@ -8,3 +8,5 @@ const app = new App({
 });
 
 export default app;
+
+// Google maps API key AIzaSyDc-02soqBTsP9KntJ9I5xEdpdMNXeHuFg;

@@ -25,9 +25,17 @@ import { createClient } from "contentful"
 import createContentfulAPI from "../node_modules/contentful-resolve-response"
 import ContentfulEvents from "./Components/Test-Headless-CMS/Contentful-Events.svelte";
 import LeftRightSection from "./Components/Info-Sections/Left-Right-Section.svelte";
+import HeroTwoColumns from "./Components/Heroes/Hero-Two-Columns.svelte";
+import TabBorder from "./Components/Tabs-Spaced-Border/Tab-Border.svelte";
+import Slider from "./Components/Galleries/Slider.svelte";
+
+
+    let componentArray = masterComponentArray
 
 
 let events = [];
+
+let activeItem = "Heroes"
 
 const tabChange = (e) => {
 		activeItem = e.detail;
@@ -215,7 +223,7 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 		/>
 	</Route>
 
-	<Route path="/Galleries/Basic">
+	<Route path="/Galleries/KNC">
 		<KnCStyleGallery 
 		images = {kncImages}
 		numberOfColumns = {5}
@@ -254,8 +262,25 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 	/>
 	</Route>
 	
+	<Route path="/Tabs/Bordered">
+		<TabBorder 
+			componentArray = {componentArray}
+			activeItem = {activeItem}
+			on:tabChange={tabChange}
+/>
+	</Route>
 	</main>
 </Router>
+
+<Slider
+	images = {images}
+	numberOfColumns = {4}
+	objWidth={"200px"}
+	gridWidth={"90%"}
+	shouldAutoplay={true}
+/>
+
+<!-- <HeroTwoColumns /> -->
 
 
 
