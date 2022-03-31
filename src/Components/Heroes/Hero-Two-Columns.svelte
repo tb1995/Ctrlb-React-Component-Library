@@ -6,9 +6,12 @@ const ctaText = "Order Now"
 const ctaUrl = "#"
 export let isH1 = true
 export let isImageFirst = false
+export let marginBottom = "0";
+export let isPrimary = true;
+
 </script>
 
-<div class="hero-1-container">
+<div class="hero-1-container" style="margin-bottom: {marginBottom}px">
 <div class="column-1 {isImageFirst ? 'text-order-second' : 'text-order-first'}">
          <div class="text-container">
              {#if isH1}
@@ -69,13 +72,14 @@ export let isImageFirst = false
 
 
 .hero-1-container {
-    height: 80vh;
+    height: 90vh;
     width: 100%;
     // background-image: url("/img/hero-banner.jpg");
     background-size: cover;
     display: flex;
     @include for-size(tablet-portrait-down) {
                  flex-wrap: wrap;
+                 height: unset;
     } 
     
 }
@@ -88,11 +92,13 @@ export let isImageFirst = false
     @include for-size(tablet-portrait-down) {
                  flex: 0 1 100%;
     } 
+
 }
 
 .column-2 {
     background-image: url("/img/KnC-bg.jpg");
     background-size: cover;
+    background-size: 100% 100%;
     flex: 0 1 50%;
     height: 100%;
     @include for-size(tablet-portrait-down) {

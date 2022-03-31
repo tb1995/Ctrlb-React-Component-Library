@@ -1,12 +1,14 @@
 <script>
 
-const h1 = "Bakery. Breakfast. Lunch. Perfection."
-const p = "Reinvented Pakistani and Indian flavors in a beautiful ambiance.";
-const ctaText = "Order Now"
-const ctaUrl = "#"
+export let h1 = "Bakery. Breakfast. Lunch. Perfection."
+export let p = "Reinvented Pakistani and Indian flavors in a beautiful ambiance.";
+export let ctaText = "Order Now"
+export let ctaUrl = "#"
+
+export let backgroundImageUrl = "/img/hero-banner.jpg";
 </script>
 
-<div class="hero-1-container">
+<div class="hero-1-container" style="background-image: url({backgroundImageUrl});">
 
     <div class="text-container">
     <h1 class="hero-heading">{h1}</h1>

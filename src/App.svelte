@@ -269,6 +269,9 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 			on:tabChange={tabChange}
 />
 	</Route>
+	<Route path="Heroes/TwoColumns">
+		<HeroTwoColumns />
+	</Route>
 	</main>
 </Router>
 

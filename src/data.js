@@ -19,6 +19,14 @@
 					imgUrl: imgDirectory + "hero-halfscreen.png",
 					dependencies: [],
 					listOfProps: []
+				},
+				{
+					title: "Hero Two Columns",
+					description: "Hero with two columns, one for images",
+					url: "/Heroes/TwoColumns",
+					imgUrl: imgDirectory + "hero-halfscreen.png",
+					dependencies: [],
+					listOfProps: []
 				}
 			],
 		},
@@ -344,49 +352,59 @@
 
 	export let images = [
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/1.jpg",
 			alt: "image alt",
 			id: 1
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/2.jpg",
 			alt: "image alt",
 			id: 2
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/3.jpg",
 			alt: "image alt",
 			id: 3
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/4.jpg",
 			alt: "image alt",
 			id: 4
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/5.jpg",
 			alt: "image alt",
 			id: 5
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/6.jpg",
 			alt: "image alt",
 			id: 6
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/7.jpg",
 			alt: "image alt",
 			id: 7
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/8.jpg",
 			alt: "image alt",
 			id: 8
 		},
 		{
-			src: "/img/icon.jpg",
+			src: "/img/gallery/9.jpg",
 			alt: "image alt",
 			id: 9
+		},
+		{
+			src: "/img/gallery/10.jpg",
+			alt: "image alt",
+			id: 10
+		},
+		{
+			src: "/img/gallery/11.jpg",
+			alt: "image alt",
+			id: 11
 		},
 	]
 

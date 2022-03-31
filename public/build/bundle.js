@@ -1037,8 +1037,10 @@ var app = (function () {
     	let div1;
     	let div0;
     	let h1_1;
+    	let t0;
     	let t1;
     	let p_1;
+    	let t2;
     	let t3;
     	let a;
     	let t4;
@@ -1048,24 +1050,25 @@ var app = (function () {
     			div1 = element("div");
     			div0 = element("div");
     			h1_1 = element("h1");
-    			h1_1.textContent = `${h1}`;
+    			t0 = text(/*h1*/ ctx[0]);
     			t1 = space$1();
     			p_1 = element("p");
-    			p_1.textContent = `${p$1}`;
+    			t2 = text(/*p*/ ctx[1]);
     			t3 = space$1();
     			a = element("a");
-    			t4 = text(ctaText$1);
+    			t4 = text(/*ctaText*/ ctx[2]);
     			attr_dev(h1_1, "class", "hero-heading svelte-1n5p4xo");
-    			add_location(h1_1, file$v, 11, 4, 266);
+    			add_location(h1_1, file$v, 13, 4, 396);
     			attr_dev(p_1, "class", "hero-para svelte-1n5p4xo");
-    			add_location(p_1, file$v, 12, 4, 305);
-    			attr_dev(a, "href", ctaUrl$1);
+    			add_location(p_1, file$v, 14, 4, 435);
+    			attr_dev(a, "href", /*ctaUrl*/ ctx[3]);
     			attr_dev(a, "class", "hero-cta svelte-1n5p4xo");
-    			add_location(a, file$v, 13, 4, 338);
+    			add_location(a, file$v, 15, 4, 468);
     			attr_dev(div0, "class", "text-container svelte-1n5p4xo");
-    			add_location(div0, file$v, 10, 4, 233);
+    			add_location(div0, file$v, 12, 4, 363);
     			attr_dev(div1, "class", "hero-1-container svelte-1n5p4xo");
-    			add_location(div1, file$v, 8, 0, 197);
+    			set_style(div1, "background-image", "url(" + /*backgroundImageUrl*/ ctx[4] + ")");
+    			add_location(div1, file$v, 10, 0, 274);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1074,13 +1077,27 @@ var app = (function () {
     			insert_dev(target, div1, anchor);
     			append_dev(div1, div0);
     			append_dev(div0, h1_1);
+    			append_dev(h1_1, t0);
     			append_dev(div0, t1);
     			append_dev(div0, p_1);
+    			append_dev(p_1, t2);
     			append_dev(div0, t3);
     			append_dev(div0, a);
     			append_dev(a, t4);
     		},
-    		p: noop$1,
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*h1*/ 1) set_data_dev(t0, /*h1*/ ctx[0]);
+    			if (dirty & /*p*/ 2) set_data_dev(t2, /*p*/ ctx[1]);
+    			if (dirty & /*ctaText*/ 4) set_data_dev(t4, /*ctaText*/ ctx[2]);
+
+    			if (dirty & /*ctaUrl*/ 8) {
+    				attr_dev(a, "href", /*ctaUrl*/ ctx[3]);
+    			}
+
+    			if (dirty & /*backgroundImageUrl*/ 16) {
+    				set_style(div1, "background-image", "url(" + /*backgroundImageUrl*/ ctx[4] + ")");
+    			}
+    		},
     		i: noop$1,
     		o: noop$1,
     		d: function destroy(detaching) {
@@ -1099,28 +1116,62 @@ var app = (function () {
     	return block;
     }
 
-    const h1 = "Bakery. Breakfast. Lunch. Perfection.";
-    const p$1 = "Reinvented Pakistani and Indian flavors in a beautiful ambiance.";
-    const ctaText$1 = "Order Now";
-    const ctaUrl$1 = "#";
-
     function instance$w($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Hero_Fullscreen', slots, []);
-    	const writable_props = [];
+    	let { h1 = "Bakery. Breakfast. Lunch. Perfection." } = $$props;
+    	let { p = "Reinvented Pakistani and Indian flavors in a beautiful ambiance." } = $$props;
+    	let { ctaText = "Order Now" } = $$props;
+    	let { ctaUrl = "#" } = $$props;
+    	let { backgroundImageUrl = "/img/hero-banner.jpg" } = $$props;
+    	const writable_props = ['h1', 'p', 'ctaText', 'ctaUrl', 'backgroundImageUrl'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Hero_Fullscreen> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ h1, p: p$1, ctaText: ctaText$1, ctaUrl: ctaUrl$1 });
-    	return [];
+    	$$self.$$set = $$props => {
+    		if ('h1' in $$props) $$invalidate(0, h1 = $$props.h1);
+    		if ('p' in $$props) $$invalidate(1, p = $$props.p);
+    		if ('ctaText' in $$props) $$invalidate(2, ctaText = $$props.ctaText);
+    		if ('ctaUrl' in $$props) $$invalidate(3, ctaUrl = $$props.ctaUrl);
+    		if ('backgroundImageUrl' in $$props) $$invalidate(4, backgroundImageUrl = $$props.backgroundImageUrl);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		h1,
+    		p,
+    		ctaText,
+    		ctaUrl,
+    		backgroundImageUrl
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('h1' in $$props) $$invalidate(0, h1 = $$props.h1);
+    		if ('p' in $$props) $$invalidate(1, p = $$props.p);
+    		if ('ctaText' in $$props) $$invalidate(2, ctaText = $$props.ctaText);
+    		if ('ctaUrl' in $$props) $$invalidate(3, ctaUrl = $$props.ctaUrl);
+    		if ('backgroundImageUrl' in $$props) $$invalidate(4, backgroundImageUrl = $$props.backgroundImageUrl);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [h1, p, ctaText, ctaUrl, backgroundImageUrl];
     }
 
     class Hero_Fullscreen extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$w, create_fragment$w, safe_not_equal, {});
+
+    		init(this, options, instance$w, create_fragment$w, safe_not_equal, {
+    			h1: 0,
+    			p: 1,
+    			ctaText: 2,
+    			ctaUrl: 3,
+    			backgroundImageUrl: 4
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -1128,6 +1179,46 @@ var app = (function () {
     			options,
     			id: create_fragment$w.name
     		});
+    	}
+
+    	get h1() {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set h1(value) {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get p() {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set p(value) {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ctaText() {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ctaText(value) {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get ctaUrl() {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set ctaUrl(value) {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get backgroundImageUrl() {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set backgroundImageUrl(value) {
+    		throw new Error("<Hero_Fullscreen>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -4081,6 +4172,14 @@ var app = (function () {
     					imgUrl: imgDirectory$1 + "hero-halfscreen.png",
     					dependencies: [],
     					listOfProps: []
+    				},
+    				{
+    					title: "Hero Two Columns",
+    					description: "Hero with two columns, one for images",
+    					url: "/Heroes/TwoColumns",
+    					imgUrl: imgDirectory$1 + "hero-halfscreen.png",
+    					dependencies: [],
+    					listOfProps: []
     				}
     			],
     		},
@@ -4406,49 +4505,59 @@ var app = (function () {
 
     	let images = [
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/1.jpg",
     			alt: "image alt",
     			id: 1
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/2.jpg",
     			alt: "image alt",
     			id: 2
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/3.jpg",
     			alt: "image alt",
     			id: 3
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/4.jpg",
     			alt: "image alt",
     			id: 4
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/5.jpg",
     			alt: "image alt",
     			id: 5
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/6.jpg",
     			alt: "image alt",
     			id: 6
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/7.jpg",
     			alt: "image alt",
     			id: 7
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/8.jpg",
     			alt: "image alt",
     			id: 8
     		},
     		{
-    			src: "/img/icon.jpg",
+    			src: "/img/gallery/9.jpg",
     			alt: "image alt",
     			id: 9
+    		},
+    		{
+    			src: "/img/gallery/10.jpg",
+    			alt: "image alt",
+    			id: 10
+    		},
+    		{
+    			src: "/img/gallery/11.jpg",
+    			alt: "image alt",
+    			id: 11
     		},
     	];
 
@@ -18846,16 +18955,16 @@ var app = (function () {
 
     const file$5 = "src/Components/Heroes/Hero-Two-Columns.svelte";
 
-    // (14:13) {#if isH1}
+    // (17:13) {#if isH1}
     function create_if_block_1(ctx) {
     	let h1_1;
 
     	const block = {
     		c: function create() {
     			h1_1 = element("h1");
-    			h1_1.textContent = `${/*h1*/ ctx[2]}`;
-    			attr_dev(h1_1, "class", "hero-heading svelte-1uq8t7q");
-    			add_location(h1_1, file$5, 14, 16, 487);
+    			h1_1.textContent = `${/*h1*/ ctx[3]}`;
+    			attr_dev(h1_1, "class", "hero-heading svelte-zqek0v");
+    			add_location(h1_1, file$5, 17, 16, 588);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1_1, anchor);
@@ -18870,23 +18979,23 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(14:13) {#if isH1}",
+    		source: "(17:13) {#if isH1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (17:13) {#if !isH1}
+    // (20:13) {#if !isH1}
     function create_if_block(ctx) {
     	let h2;
 
     	const block = {
     		c: function create() {
     			h2 = element("h2");
-    			h2.textContent = `${/*h1*/ ctx[2]}`;
-    			attr_dev(h2, "class", "hero-heading svelte-1uq8t7q");
-    			add_location(h2, file$5, 17, 16, 582);
+    			h2.textContent = `${/*h1*/ ctx[3]}`;
+    			attr_dev(h2, "class", "hero-heading svelte-zqek0v");
+    			add_location(h2, file$5, 20, 16, 683);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -18901,7 +19010,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(17:13) {#if !isH1}",
+    		source: "(20:13) {#if !isH1}",
     		ctx
     	});
 
@@ -18941,27 +19050,28 @@ var app = (function () {
     			t4 = text(ctaText);
     			t5 = space$1();
     			div2 = element("div");
-    			attr_dev(p_1, "class", "hero-para svelte-1uq8t7q");
-    			add_location(p_1, file$5, 20, 12, 661);
+    			attr_dev(p_1, "class", "hero-para svelte-zqek0v");
+    			add_location(p_1, file$5, 23, 12, 762);
     			attr_dev(a, "href", ctaUrl);
-    			attr_dev(a, "class", "hero-cta svelte-1uq8t7q");
-    			add_location(a, file$5, 21, 12, 702);
-    			attr_dev(div0, "class", "text-container svelte-1uq8t7q");
-    			add_location(div0, file$5, 12, 9, 418);
+    			attr_dev(a, "class", "hero-cta svelte-zqek0v");
+    			add_location(a, file$5, 24, 12, 803);
+    			attr_dev(div0, "class", "text-container svelte-zqek0v");
+    			add_location(div0, file$5, 15, 9, 519);
 
     			attr_dev(div1, "class", div1_class_value = "column-1 " + (/*isImageFirst*/ ctx[1]
     			? 'text-order-second'
-    			: 'text-order-first') + " svelte-1uq8t7q");
+    			: 'text-order-first') + " svelte-zqek0v");
 
-    			add_location(div1, file$5, 11, 0, 328);
+    			add_location(div1, file$5, 14, 0, 429);
 
     			attr_dev(div2, "class", div2_class_value = "column-2 " + (/*isImageFirst*/ ctx[1]
     			? 'image-order-first'
-    			: 'image-order-second') + " svelte-1uq8t7q");
+    			: 'image-order-second') + " svelte-zqek0v");
 
-    			add_location(div2, file$5, 24, 4, 785);
-    			attr_dev(div3, "class", "hero-1-container svelte-1uq8t7q");
-    			add_location(div3, file$5, 10, 0, 297);
+    			add_location(div2, file$5, 27, 4, 886);
+    			attr_dev(div3, "class", "hero-1-container svelte-zqek0v");
+    			set_style(div3, "margin-bottom", /*marginBottom*/ ctx[2] + "px");
+    			add_location(div3, file$5, 13, 0, 358);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -19010,14 +19120,18 @@ var app = (function () {
 
     			if (dirty & /*isImageFirst*/ 2 && div1_class_value !== (div1_class_value = "column-1 " + (/*isImageFirst*/ ctx[1]
     			? 'text-order-second'
-    			: 'text-order-first') + " svelte-1uq8t7q")) {
+    			: 'text-order-first') + " svelte-zqek0v")) {
     				attr_dev(div1, "class", div1_class_value);
     			}
 
     			if (dirty & /*isImageFirst*/ 2 && div2_class_value !== (div2_class_value = "column-2 " + (/*isImageFirst*/ ctx[1]
     			? 'image-order-first'
-    			: 'image-order-second') + " svelte-1uq8t7q")) {
+    			: 'image-order-second') + " svelte-zqek0v")) {
     				attr_dev(div2, "class", div2_class_value);
+    			}
+
+    			if (dirty & /*marginBottom*/ 4) {
+    				set_style(div3, "margin-bottom", /*marginBottom*/ ctx[2] + "px");
     			}
     		},
     		i: noop$1,
@@ -19050,7 +19164,9 @@ var app = (function () {
     	const h1 = "Simply \n" + "Delicious Food";
     	let { isH1 = true } = $$props;
     	let { isImageFirst = false } = $$props;
-    	const writable_props = ['isH1', 'isImageFirst'];
+    	let { marginBottom = "0" } = $$props;
+    	let { isPrimary = true } = $$props;
+    	const writable_props = ['isH1', 'isImageFirst', 'marginBottom', 'isPrimary'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Hero_Two_Columns> was created with unknown prop '${key}'`);
@@ -19059,6 +19175,8 @@ var app = (function () {
     	$$self.$$set = $$props => {
     		if ('isH1' in $$props) $$invalidate(0, isH1 = $$props.isH1);
     		if ('isImageFirst' in $$props) $$invalidate(1, isImageFirst = $$props.isImageFirst);
+    		if ('marginBottom' in $$props) $$invalidate(2, marginBottom = $$props.marginBottom);
+    		if ('isPrimary' in $$props) $$invalidate(4, isPrimary = $$props.isPrimary);
     	};
 
     	$$self.$capture_state = () => ({
@@ -19067,25 +19185,35 @@ var app = (function () {
     		ctaText,
     		ctaUrl,
     		isH1,
-    		isImageFirst
+    		isImageFirst,
+    		marginBottom,
+    		isPrimary
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('isH1' in $$props) $$invalidate(0, isH1 = $$props.isH1);
     		if ('isImageFirst' in $$props) $$invalidate(1, isImageFirst = $$props.isImageFirst);
+    		if ('marginBottom' in $$props) $$invalidate(2, marginBottom = $$props.marginBottom);
+    		if ('isPrimary' in $$props) $$invalidate(4, isPrimary = $$props.isPrimary);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [isH1, isImageFirst, h1];
+    	return [isH1, isImageFirst, marginBottom, h1, isPrimary];
     }
 
     class Hero_Two_Columns extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$5, create_fragment$5, safe_not_equal, { isH1: 0, isImageFirst: 1 });
+
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, {
+    			isH1: 0,
+    			isImageFirst: 1,
+    			marginBottom: 2,
+    			isPrimary: 4
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -19108,6 +19236,22 @@ var app = (function () {
     	}
 
     	set isImageFirst(value) {
+    		throw new Error("<Hero_Two_Columns>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get marginBottom() {
+    		throw new Error("<Hero_Two_Columns>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set marginBottom(value) {
+    		throw new Error("<Hero_Two_Columns>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get isPrimary() {
+    		throw new Error("<Hero_Two_Columns>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set isPrimary(value) {
     		throw new Error("<Hero_Two_Columns>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -19378,18 +19522,18 @@ var app = (function () {
     			svg = svg_element("svg");
     			polyline = svg_element("polyline");
     			attr_dev(polyline, "points", "15 18 9 12 15 6");
-    			add_location(polyline, file$3, 13, 249, 535);
+    			add_location(polyline, file$3, 14, 249, 569);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "width", /*size*/ ctx[0]);
     			attr_dev(svg, "height", /*size*/ ctx[0]);
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "viewBox", "0 0 24 24");
-    			attr_dev(svg, "stroke", "currentColor");
+    			attr_dev(svg, "stroke", /*strokeFill*/ ctx[2]);
     			attr_dev(svg, "stroke-width", /*strokeWidth*/ ctx[1]);
     			attr_dev(svg, "stroke-linecap", "round");
     			attr_dev(svg, "stroke-linejoin", "round");
-    			attr_dev(svg, "class", svg_class_value = "feather feather-chevron-left " + /*customClass*/ ctx[2]);
-    			add_location(svg, file$3, 13, 0, 286);
+    			attr_dev(svg, "class", svg_class_value = "feather feather-chevron-left " + /*customClass*/ ctx[3]);
+    			add_location(svg, file$3, 14, 0, 320);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -19407,11 +19551,15 @@ var app = (function () {
     				attr_dev(svg, "height", /*size*/ ctx[0]);
     			}
 
+    			if (dirty & /*strokeFill*/ 4) {
+    				attr_dev(svg, "stroke", /*strokeFill*/ ctx[2]);
+    			}
+
     			if (dirty & /*strokeWidth*/ 2) {
     				attr_dev(svg, "stroke-width", /*strokeWidth*/ ctx[1]);
     			}
 
-    			if (dirty & /*customClass*/ 4 && svg_class_value !== (svg_class_value = "feather feather-chevron-left " + /*customClass*/ ctx[2])) {
+    			if (dirty & /*customClass*/ 8 && svg_class_value !== (svg_class_value = "feather feather-chevron-left " + /*customClass*/ ctx[3])) {
     				attr_dev(svg, "class", svg_class_value);
     			}
     		},
@@ -19438,6 +19586,7 @@ var app = (function () {
     	validate_slots('ChevronLeftIcon', slots, []);
     	let { size = "100%" } = $$props;
     	let { strokeWidth = 2 } = $$props;
+    	let { strokeFill = "white" } = $$props;
     	let { class: customClass = "" } = $$props;
 
     	if (size !== "100%") {
@@ -19446,7 +19595,7 @@ var app = (function () {
     		: parseInt(size) + 'px';
     	}
 
-    	const writable_props = ['size', 'strokeWidth', 'class'];
+    	const writable_props = ['size', 'strokeWidth', 'strokeFill', 'class'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<ChevronLeftIcon> was created with unknown prop '${key}'`);
@@ -19455,28 +19604,41 @@ var app = (function () {
     	$$self.$$set = $$props => {
     		if ('size' in $$props) $$invalidate(0, size = $$props.size);
     		if ('strokeWidth' in $$props) $$invalidate(1, strokeWidth = $$props.strokeWidth);
-    		if ('class' in $$props) $$invalidate(2, customClass = $$props.class);
+    		if ('strokeFill' in $$props) $$invalidate(2, strokeFill = $$props.strokeFill);
+    		if ('class' in $$props) $$invalidate(3, customClass = $$props.class);
     	};
 
-    	$$self.$capture_state = () => ({ size, strokeWidth, customClass });
+    	$$self.$capture_state = () => ({
+    		size,
+    		strokeWidth,
+    		strokeFill,
+    		customClass
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ('size' in $$props) $$invalidate(0, size = $$props.size);
     		if ('strokeWidth' in $$props) $$invalidate(1, strokeWidth = $$props.strokeWidth);
-    		if ('customClass' in $$props) $$invalidate(2, customClass = $$props.customClass);
+    		if ('strokeFill' in $$props) $$invalidate(2, strokeFill = $$props.strokeFill);
+    		if ('customClass' in $$props) $$invalidate(3, customClass = $$props.customClass);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [size, strokeWidth, customClass];
+    	return [size, strokeWidth, strokeFill, customClass];
     }
 
     class ChevronLeftIcon extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { size: 0, strokeWidth: 1, class: 2 });
+
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, {
+    			size: 0,
+    			strokeWidth: 1,
+    			strokeFill: 2,
+    			class: 3
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -19499,6 +19661,14 @@ var app = (function () {
     	}
 
     	set strokeWidth(value) {
+    		throw new Error("<ChevronLeftIcon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get strokeFill() {
+    		throw new Error("<ChevronLeftIcon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set strokeFill(value) {
     		throw new Error("<ChevronLeftIcon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -19525,18 +19695,18 @@ var app = (function () {
     			svg = svg_element("svg");
     			polyline = svg_element("polyline");
     			attr_dev(polyline, "points", "9 18 15 12 9 6");
-    			add_location(polyline, file$2, 13, 250, 536);
+    			add_location(polyline, file$2, 15, 250, 571);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "width", /*size*/ ctx[0]);
     			attr_dev(svg, "height", /*size*/ ctx[0]);
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "viewBox", "0 0 24 24");
-    			attr_dev(svg, "stroke", "currentColor");
+    			attr_dev(svg, "stroke", /*strokeFill*/ ctx[2]);
     			attr_dev(svg, "stroke-width", /*strokeWidth*/ ctx[1]);
     			attr_dev(svg, "stroke-linecap", "round");
     			attr_dev(svg, "stroke-linejoin", "round");
-    			attr_dev(svg, "class", svg_class_value = "feather feather-chevron-right " + /*customClass*/ ctx[2]);
-    			add_location(svg, file$2, 13, 0, 286);
+    			attr_dev(svg, "class", svg_class_value = "feather feather-chevron-right " + /*customClass*/ ctx[3]);
+    			add_location(svg, file$2, 15, 0, 321);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -19554,11 +19724,15 @@ var app = (function () {
     				attr_dev(svg, "height", /*size*/ ctx[0]);
     			}
 
+    			if (dirty & /*strokeFill*/ 4) {
+    				attr_dev(svg, "stroke", /*strokeFill*/ ctx[2]);
+    			}
+
     			if (dirty & /*strokeWidth*/ 2) {
     				attr_dev(svg, "stroke-width", /*strokeWidth*/ ctx[1]);
     			}
 
-    			if (dirty & /*customClass*/ 4 && svg_class_value !== (svg_class_value = "feather feather-chevron-right " + /*customClass*/ ctx[2])) {
+    			if (dirty & /*customClass*/ 8 && svg_class_value !== (svg_class_value = "feather feather-chevron-right " + /*customClass*/ ctx[3])) {
     				attr_dev(svg, "class", svg_class_value);
     			}
     		},
@@ -19585,6 +19759,7 @@ var app = (function () {
     	validate_slots('ChevronRightIcon', slots, []);
     	let { size = "100%" } = $$props;
     	let { strokeWidth = 2 } = $$props;
+    	let { strokeFill = "white" } = $$props;
     	let { class: customClass = "" } = $$props;
 
     	if (size !== "100%") {
@@ -19593,7 +19768,7 @@ var app = (function () {
     		: parseInt(size) + 'px';
     	}
 
-    	const writable_props = ['size', 'strokeWidth', 'class'];
+    	const writable_props = ['size', 'strokeWidth', 'strokeFill', 'class'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<ChevronRightIcon> was created with unknown prop '${key}'`);
@@ -19602,28 +19777,41 @@ var app = (function () {
     	$$self.$$set = $$props => {
     		if ('size' in $$props) $$invalidate(0, size = $$props.size);
     		if ('strokeWidth' in $$props) $$invalidate(1, strokeWidth = $$props.strokeWidth);
-    		if ('class' in $$props) $$invalidate(2, customClass = $$props.class);
+    		if ('strokeFill' in $$props) $$invalidate(2, strokeFill = $$props.strokeFill);
+    		if ('class' in $$props) $$invalidate(3, customClass = $$props.class);
     	};
 
-    	$$self.$capture_state = () => ({ size, strokeWidth, customClass });
+    	$$self.$capture_state = () => ({
+    		size,
+    		strokeWidth,
+    		strokeFill,
+    		customClass
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ('size' in $$props) $$invalidate(0, size = $$props.size);
     		if ('strokeWidth' in $$props) $$invalidate(1, strokeWidth = $$props.strokeWidth);
-    		if ('customClass' in $$props) $$invalidate(2, customClass = $$props.customClass);
+    		if ('strokeFill' in $$props) $$invalidate(2, strokeFill = $$props.strokeFill);
+    		if ('customClass' in $$props) $$invalidate(3, customClass = $$props.customClass);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [size, strokeWidth, customClass];
+    	return [size, strokeWidth, strokeFill, customClass];
     }
 
     class ChevronRightIcon extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { size: 0, strokeWidth: 1, class: 2 });
+
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, {
+    			size: 0,
+    			strokeWidth: 1,
+    			strokeFill: 2,
+    			class: 3
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -19649,6 +19837,14 @@ var app = (function () {
     		throw new Error("<ChevronRightIcon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
+    	get strokeFill() {
+    		throw new Error("<ChevronRightIcon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set strokeFill(value) {
+    		throw new Error("<ChevronRightIcon>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
     	get class() {
     		throw new Error("<ChevronRightIcon>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
@@ -19669,7 +19865,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (69:4) {#each images as image (image.id)}
+    // (75:4) {#each images as image (image.id)}
     function create_each_block(key_1, ctx) {
     	let img;
     	let img_id_value;
@@ -19690,12 +19886,12 @@ var app = (function () {
 
     			attr_dev(img, "class", img_class_value = "image " + (/*image*/ ctx[13].alt === 'ThisIsInvisible123'
     			? 'invisible-obj'
-    			: '') + " svelte-1gnioof");
+    			: '') + " svelte-xk0kxi");
 
     			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[13].src)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", img_alt_value = /*image*/ ctx[13].alt);
     			set_style(img, "height", /*gridWidth*/ ctx[1]);
-    			add_location(img, file$1, 69, 0, 1698);
+    			add_location(img, file$1, 75, 0, 1935);
     			this.first = img;
     		},
     		m: function mount(target, anchor) {
@@ -19703,8 +19899,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(img, "mouseover", /*stopAutoplay*/ ctx[5], false, false, false),
-    					listen_dev(img, "mouseout", /*startAutoplay*/ ctx[4], false, false, false)
+    					listen_dev(img, "mouseover", /*stopAutoplay*/ ctx[3], false, false, false),
+    					listen_dev(img, "mouseout", /*startAutoplay*/ ctx[2], false, false, false)
     				];
 
     				mounted = true;
@@ -19719,7 +19915,7 @@ var app = (function () {
 
     			if (dirty & /*images*/ 1 && img_class_value !== (img_class_value = "image " + (/*image*/ ctx[13].alt === 'ThisIsInvisible123'
     			? 'invisible-obj'
-    			: '') + " svelte-1gnioof")) {
+    			: '') + " svelte-xk0kxi")) {
     				attr_dev(img, "class", img_class_value);
     			}
 
@@ -19757,7 +19953,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(69:4) {#each images as image (image.id)}",
+    		source: "(75:4) {#each images as image (image.id)}",
     		ctx
     	});
 
@@ -19769,15 +19965,6 @@ var app = (function () {
     	let div0;
     	let each_blocks = [];
     	let each_1_lookup = new Map();
-    	let t0;
-    	let button0;
-    	let chevronlefticon;
-    	let t1;
-    	let button1;
-    	let chevronrighticon;
-    	let current;
-    	let mounted;
-    	let dispose;
     	let each_value = /*images*/ ctx[0];
     	validate_each_argument(each_value);
     	const get_key = ctx => /*image*/ ctx[13].id;
@@ -19789,9 +19976,6 @@ var app = (function () {
     		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
     	}
 
-    	chevronlefticon = new ChevronLeftIcon({ $$inline: true });
-    	chevronrighticon = new ChevronRightIcon({ $$inline: true });
-
     	const block = {
     		c: function create() {
     			div1 = element("div");
@@ -19801,23 +19985,11 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t0 = space$1();
-    			button0 = element("button");
-    			create_component(chevronlefticon.$$.fragment);
-    			t1 = space$1();
-    			button1 = element("button");
-    			create_component(chevronrighticon.$$.fragment);
-    			attr_dev(div0, "class", "image  svelte-1gnioof");
-    			add_location(div0, file$1, 66, 4, 1633);
-    			attr_dev(button0, "id", "left");
-    			attr_dev(button0, "class", "svelte-1gnioof");
-    			add_location(button0, file$1, 74, 4, 1979);
-    			attr_dev(button1, "id", "right");
-    			attr_dev(button1, "class", "svelte-1gnioof");
-    			add_location(button1, file$1, 78, 4, 2114);
-    			attr_dev(div1, "class", "gallery-container svelte-1gnioof");
+    			attr_dev(div0, "class", "image image-container svelte-xk0kxi");
+    			add_location(div0, file$1, 72, 4, 1855);
+    			attr_dev(div1, "class", "gallery-container svelte-xk0kxi");
     			set_style(div1, "width", /*gridWidth*/ ctx[1]);
-    			add_location(div1, file$1, 63, 0, 1565);
+    			add_location(div1, file$1, 69, 0, 1787);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -19829,26 +20001,9 @@ var app = (function () {
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div0, null);
     			}
-
-    			append_dev(div1, t0);
-    			append_dev(div1, button0);
-    			mount_component(chevronlefticon, button0, null);
-    			append_dev(div1, t1);
-    			append_dev(div1, button1);
-    			mount_component(chevronrighticon, button1, null);
-    			current = true;
-
-    			if (!mounted) {
-    				dispose = [
-    					listen_dev(button0, "click", /*rotateLeft*/ ctx[2], false, false, false),
-    					listen_dev(button1, "click", /*rotateRight*/ ctx[3], false, false, false)
-    				];
-
-    				mounted = true;
-    			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*images, gridWidth, stopAutoplay, startAutoplay*/ 51) {
+    			if (dirty & /*images, gridWidth, stopAutoplay, startAutoplay*/ 15) {
     				each_value = /*images*/ ctx[0];
     				validate_each_argument(each_value);
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].r();
@@ -19857,32 +20012,18 @@ var app = (function () {
     				for (let i = 0; i < each_blocks.length; i += 1) each_blocks[i].a();
     			}
 
-    			if (!current || dirty & /*gridWidth*/ 2) {
+    			if (dirty & /*gridWidth*/ 2) {
     				set_style(div1, "width", /*gridWidth*/ ctx[1]);
     			}
     		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(chevronlefticon.$$.fragment, local);
-    			transition_in(chevronrighticon.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(chevronlefticon.$$.fragment, local);
-    			transition_out(chevronrighticon.$$.fragment, local);
-    			current = false;
-    		},
+    		i: noop$1,
+    		o: noop$1,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div1);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].d();
     			}
-
-    			destroy_component(chevronlefticon);
-    			destroy_component(chevronrighticon);
-    			mounted = false;
-    			run_all(dispose);
     		}
     	};
 
@@ -19927,15 +20068,22 @@ var app = (function () {
     	// })
     	// }
     	function rotateLeft() {
-    		const transitioningImage = images[images.length - 1];
+    		// const transitioningImage = images[images.length - 1];
+    		console.log(images);
+
+    		const transitioningImage = images[0];
+    		console.log("transitioning image: " + transitioningImage.id);
     		document.getElementById("image" + transitioningImage.id).style.opacity = 0;
-    		$$invalidate(0, images = [images[images.length - 1], ...images.slice(0, images.length - 1)]);
+
+    		// images = [images[images.length - 1],...images.slice(0, images.length - 1)]
+    		$$invalidate(0, images = [...images.slice(1, images.length), images[0]]);
 
     		setTimeout(
     			() => {
     				document.getElementById("image" + transitioningImage.id).style.opacity = 1;
+    				console.log("Happening");
     			},
-    			3300
+    			5000
     		);
     	}
 
@@ -19966,9 +20114,9 @@ var app = (function () {
     	$$self.$$set = $$props => {
     		if ('images' in $$props) $$invalidate(0, images = $$props.images);
     		if ('gridWidth' in $$props) $$invalidate(1, gridWidth = $$props.gridWidth);
-    		if ('numberOfColumns' in $$props) $$invalidate(6, numberOfColumns = $$props.numberOfColumns);
-    		if ('shouldAutoplay' in $$props) $$invalidate(7, shouldAutoplay = $$props.shouldAutoplay);
-    		if ('autoplaySpeed' in $$props) $$invalidate(8, autoplaySpeed = $$props.autoplaySpeed);
+    		if ('numberOfColumns' in $$props) $$invalidate(4, numberOfColumns = $$props.numberOfColumns);
+    		if ('shouldAutoplay' in $$props) $$invalidate(5, shouldAutoplay = $$props.shouldAutoplay);
+    		if ('autoplaySpeed' in $$props) $$invalidate(6, autoplaySpeed = $$props.autoplaySpeed);
     	};
 
     	$$self.$capture_state = () => ({
@@ -19995,9 +20143,9 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('images' in $$props) $$invalidate(0, images = $$props.images);
     		if ('gridWidth' in $$props) $$invalidate(1, gridWidth = $$props.gridWidth);
-    		if ('numberOfColumns' in $$props) $$invalidate(6, numberOfColumns = $$props.numberOfColumns);
-    		if ('shouldAutoplay' in $$props) $$invalidate(7, shouldAutoplay = $$props.shouldAutoplay);
-    		if ('autoplaySpeed' in $$props) $$invalidate(8, autoplaySpeed = $$props.autoplaySpeed);
+    		if ('numberOfColumns' in $$props) $$invalidate(4, numberOfColumns = $$props.numberOfColumns);
+    		if ('shouldAutoplay' in $$props) $$invalidate(5, shouldAutoplay = $$props.shouldAutoplay);
+    		if ('autoplaySpeed' in $$props) $$invalidate(6, autoplaySpeed = $$props.autoplaySpeed);
     		if ('interval' in $$props) interval = $$props.interval;
     		if ('flexWidth' in $$props) flexWidth = $$props.flexWidth;
     		if ('dividor' in $$props) dividor = $$props.dividor;
@@ -20011,8 +20159,6 @@ var app = (function () {
     	return [
     		images,
     		gridWidth,
-    		rotateLeft,
-    		rotateRight,
     		startAutoplay,
     		stopAutoplay,
     		numberOfColumns,
@@ -20028,9 +20174,9 @@ var app = (function () {
     		init(this, options, instance$1, create_fragment$1, safe_not_equal, {
     			images: 0,
     			gridWidth: 1,
-    			numberOfColumns: 6,
-    			shouldAutoplay: 7,
-    			autoplaySpeed: 8
+    			numberOfColumns: 4,
+    			shouldAutoplay: 5,
+    			autoplaySpeed: 6
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -20051,7 +20197,7 @@ var app = (function () {
     			console_1.warn("<Slider> was created without expected prop 'gridWidth'");
     		}
 
-    		if (/*numberOfColumns*/ ctx[6] === undefined && !('numberOfColumns' in props)) {
+    		if (/*numberOfColumns*/ ctx[4] === undefined && !('numberOfColumns' in props)) {
     			console_1.warn("<Slider> was created without expected prop 'numberOfColumns'");
     		}
     	}
@@ -20101,7 +20247,7 @@ var app = (function () {
     const file = "src/App.svelte";
 
     // (81:4) <Route path="/Heroes/Fullscreen">
-    function create_default_slot_22(ctx) {
+    function create_default_slot_23(ctx) {
     	let herofullscreen;
     	let current;
     	herofullscreen = new Hero_Fullscreen({ $$inline: true });
@@ -20130,7 +20276,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_22.name,
+    		id: create_default_slot_23.name,
     		type: "slot",
     		source: "(81:4) <Route path=\\\"/Heroes/Fullscreen\\\">",
     		ctx
@@ -20140,7 +20286,7 @@ var app = (function () {
     }
 
     // (85:1) <Route path="/Heroes/Halfscreen">
-    function create_default_slot_21(ctx) {
+    function create_default_slot_22(ctx) {
     	let herohalfscreen;
     	let current;
 
@@ -20179,7 +20325,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_21.name,
+    		id: create_default_slot_22.name,
     		type: "slot",
     		source: "(85:1) <Route path=\\\"/Heroes/Halfscreen\\\">",
     		ctx
@@ -20189,7 +20335,7 @@ var app = (function () {
     }
 
     // (94:1) <Route path="/Info/1">
-    function create_default_slot_20(ctx) {
+    function create_default_slot_21(ctx) {
     	let info_1;
     	let current;
     	info_1 = new Info_1({ $$inline: true });
@@ -20218,7 +20364,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_20.name,
+    		id: create_default_slot_21.name,
     		type: "slot",
     		source: "(94:1) <Route path=\\\"/Info/1\\\">",
     		ctx
@@ -20228,6 +20374,58 @@ var app = (function () {
     }
 
     // (98:1) <Route path="/Info/1-Alt">
+    function create_default_slot_20(ctx) {
+    	let info_1alt;
+    	let current;
+
+    	info_1alt = new Info_1_Alt({
+    			props: {
+    				infoHeading: "So much more than just a cafe",
+    				tinyTopText: "odd little bit of text",
+    				infoPara: "Kettle'e was started by the talented team of foodies at Kabab & Curry to expand their culinary horizons with medleys of different cuisines along with Indian and Pakistani food. Set in a picturesque setting, the cafe has become a mainstay in the Santa Clara area and has grown a unique fan following.",
+    				buttonText: "About Us",
+    				buttonUrl: "#",
+    				imgUrl: "/img/icon.jpg",
+    				imgAlt: ""
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(info_1alt.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(info_1alt, target, anchor);
+    			current = true;
+    		},
+    		p: noop$1,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(info_1alt.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(info_1alt.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(info_1alt, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_20.name,
+    		type: "slot",
+    		source: "(98:1) <Route path=\\\"/Info/1-Alt\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (111:1) <Route path="/Info/1-Alt">
     function create_default_slot_19(ctx) {
     	let info_1alt;
     	let current;
@@ -20272,58 +20470,6 @@ var app = (function () {
     		block,
     		id: create_default_slot_19.name,
     		type: "slot",
-    		source: "(98:1) <Route path=\\\"/Info/1-Alt\\\">",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (111:1) <Route path="/Info/1-Alt">
-    function create_default_slot_18(ctx) {
-    	let info_1alt;
-    	let current;
-
-    	info_1alt = new Info_1_Alt({
-    			props: {
-    				infoHeading: "So much more than just a cafe",
-    				tinyTopText: "odd little bit of text",
-    				infoPara: "Kettle'e was started by the talented team of foodies at Kabab & Curry to expand their culinary horizons with medleys of different cuisines along with Indian and Pakistani food. Set in a picturesque setting, the cafe has become a mainstay in the Santa Clara area and has grown a unique fan following.",
-    				buttonText: "About Us",
-    				buttonUrl: "#",
-    				imgUrl: "/img/icon.jpg",
-    				imgAlt: ""
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(info_1alt.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(info_1alt, target, anchor);
-    			current = true;
-    		},
-    		p: noop$1,
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(info_1alt.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(info_1alt.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(info_1alt, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_18.name,
-    		type: "slot",
     		source: "(111:1) <Route path=\\\"/Info/1-Alt\\\">",
     		ctx
     	});
@@ -20332,7 +20478,7 @@ var app = (function () {
     }
 
     // (123:1) <Route path="/Info/1-Reversed">
-    function create_default_slot_17(ctx) {
+    function create_default_slot_18(ctx) {
     	let info_1alt_2;
     	let current;
 
@@ -20374,7 +20520,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_17.name,
+    		id: create_default_slot_18.name,
     		type: "slot",
     		source: "(123:1) <Route path=\\\"/Info/1-Reversed\\\">",
     		ctx
@@ -20384,7 +20530,7 @@ var app = (function () {
     }
 
     // (135:1) <Route path="/Info/Grids">
-    function create_default_slot_16(ctx) {
+    function create_default_slot_17(ctx) {
     	let info_4grid;
     	let current;
 
@@ -20425,7 +20571,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_16.name,
+    		id: create_default_slot_17.name,
     		type: "slot",
     		source: "(135:1) <Route path=\\\"/Info/Grids\\\">",
     		ctx
@@ -20435,7 +20581,7 @@ var app = (function () {
     }
 
     // (147:1) <Route path="/Grids/Responsive">
-    function create_default_slot_15(ctx) {
+    function create_default_slot_16(ctx) {
     	let responsivegrid;
     	let current;
 
@@ -20474,7 +20620,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_15.name,
+    		id: create_default_slot_16.name,
     		type: "slot",
     		source: "(147:1) <Route path=\\\"/Grids/Responsive\\\">",
     		ctx
@@ -20484,7 +20630,7 @@ var app = (function () {
     }
 
     // (156:1) <Route path="/Tabs/Centered">
-    function create_default_slot_14(ctx) {
+    function create_default_slot_15(ctx) {
     	let tab;
     	let current;
 
@@ -20523,7 +20669,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_14.name,
+    		id: create_default_slot_15.name,
     		type: "slot",
     		source: "(156:1) <Route path=\\\"/Tabs/Centered\\\">",
     		ctx
@@ -20533,7 +20679,7 @@ var app = (function () {
     }
 
     // (164:1) <Route path="/Navbar/Traditional">
-    function create_default_slot_13(ctx) {
+    function create_default_slot_14(ctx) {
     	let navbar;
     	let current;
     	navbar = new Navbar({ $$inline: true });
@@ -20562,7 +20708,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_13.name,
+    		id: create_default_slot_14.name,
     		type: "slot",
     		source: "(164:1) <Route path=\\\"/Navbar/Traditional\\\">",
     		ctx
@@ -20572,7 +20718,7 @@ var app = (function () {
     }
 
     // (168:1) <Route path="/Footers/Column-4">
-    function create_default_slot_12(ctx) {
+    function create_default_slot_13(ctx) {
     	let footer_4columns;
     	let current;
 
@@ -20614,7 +20760,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_12.name,
+    		id: create_default_slot_13.name,
     		type: "slot",
     		source: "(168:1) <Route path=\\\"/Footers/Column-4\\\">",
     		ctx
@@ -20624,7 +20770,7 @@ var app = (function () {
     }
 
     // (180:1) <Route path="/Grids/Responsive-Info">
-    function create_default_slot_11(ctx) {
+    function create_default_slot_12(ctx) {
     	let responsivegridmoreinfo;
     	let current;
 
@@ -20663,7 +20809,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_11.name,
+    		id: create_default_slot_12.name,
     		type: "slot",
     		source: "(180:1) <Route path=\\\"/Grids/Responsive-Info\\\">",
     		ctx
@@ -20673,7 +20819,7 @@ var app = (function () {
     }
 
     // (189:1) <Route path="/Grids/Responsive-Info-Icons">
-    function create_default_slot_10(ctx) {
+    function create_default_slot_11(ctx) {
     	let responsivegridicons;
     	let current;
 
@@ -20712,7 +20858,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_10.name,
+    		id: create_default_slot_11.name,
     		type: "slot",
     		source: "(189:1) <Route path=\\\"/Grids/Responsive-Info-Icons\\\">",
     		ctx
@@ -20722,7 +20868,7 @@ var app = (function () {
     }
 
     // (198:1) <Route path="/Banners/OnlyButton">
-    function create_default_slot_9(ctx) {
+    function create_default_slot_10(ctx) {
     	let onlybutton;
     	let current;
 
@@ -20756,7 +20902,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_9.name,
+    		id: create_default_slot_10.name,
     		type: "slot",
     		source: "(198:1) <Route path=\\\"/Banners/OnlyButton\\\">",
     		ctx
@@ -20766,7 +20912,7 @@ var app = (function () {
     }
 
     // (205:1) <Route path="/Banners/Paragraph-Button">
-    function create_default_slot_8(ctx) {
+    function create_default_slot_9(ctx) {
     	let paragraphbutton;
     	let current;
 
@@ -20804,7 +20950,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_8.name,
+    		id: create_default_slot_9.name,
     		type: "slot",
     		source: "(205:1) <Route path=\\\"/Banners/Paragraph-Button\\\">",
     		ctx
@@ -20814,7 +20960,7 @@ var app = (function () {
     }
 
     // (213:1) <Route path="/Forms/Form-1">
-    function create_default_slot_7(ctx) {
+    function create_default_slot_8(ctx) {
     	let form_1;
     	let current;
     	form_1 = new Form_1({ $$inline: true });
@@ -20843,7 +20989,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_7.name,
+    		id: create_default_slot_8.name,
     		type: "slot",
     		source: "(213:1) <Route path=\\\"/Forms/Form-1\\\">",
     		ctx
@@ -20853,7 +20999,7 @@ var app = (function () {
     }
 
     // (217:1) <Route path="/Galleries/Basic">
-    function create_default_slot_6(ctx) {
+    function create_default_slot_7(ctx) {
     	let fulllengthgallery;
     	let current;
 
@@ -20892,7 +21038,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_6.name,
+    		id: create_default_slot_7.name,
     		type: "slot",
     		source: "(217:1) <Route path=\\\"/Galleries/Basic\\\">",
     		ctx
@@ -20902,7 +21048,7 @@ var app = (function () {
     }
 
     // (226:1) <Route path="/Galleries/KNC">
-    function create_default_slot_5(ctx) {
+    function create_default_slot_6(ctx) {
     	let kncstylegallery;
     	let current;
 
@@ -20942,7 +21088,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_5.name,
+    		id: create_default_slot_6.name,
     		type: "slot",
     		source: "(226:1) <Route path=\\\"/Galleries/KNC\\\">",
     		ctx
@@ -20952,7 +21098,7 @@ var app = (function () {
     }
 
     // (236:1) <Route path="/Info/Form">
-    function create_default_slot_4(ctx) {
+    function create_default_slot_5(ctx) {
     	let infowithform;
     	let current;
 
@@ -20994,7 +21140,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_4.name,
+    		id: create_default_slot_5.name,
     		type: "slot",
     		source: "(236:1) <Route path=\\\"/Info/Form\\\">",
     		ctx
@@ -21004,7 +21150,7 @@ var app = (function () {
     }
 
     // (248:1) <Route path="/Info/Left-Right">
-    function create_default_slot_3(ctx) {
+    function create_default_slot_4(ctx) {
     	let leftrightsection;
     	let current;
     	leftrightsection = new Left_Right_Section({ $$inline: true });
@@ -21033,7 +21179,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_3.name,
+    		id: create_default_slot_4.name,
     		type: "slot",
     		source: "(248:1) <Route path=\\\"/Info/Left-Right\\\">",
     		ctx
@@ -21043,7 +21189,7 @@ var app = (function () {
     }
 
     // (256:1) <Route path="/contentful/events">
-    function create_default_slot_2(ctx) {
+    function create_default_slot_3(ctx) {
     	let contentfulevents;
     	let current;
 
@@ -21081,7 +21227,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_2.name,
+    		id: create_default_slot_3.name,
     		type: "slot",
     		source: "(256:1) <Route path=\\\"/contentful/events\\\">",
     		ctx
@@ -21091,7 +21237,7 @@ var app = (function () {
     }
 
     // (265:1) <Route path="/Tabs/Bordered">
-    function create_default_slot_1(ctx) {
+    function create_default_slot_2(ctx) {
     	let tabborder;
     	let current;
 
@@ -21134,9 +21280,48 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_1.name,
+    		id: create_default_slot_2.name,
     		type: "slot",
     		source: "(265:1) <Route path=\\\"/Tabs/Bordered\\\">",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (272:1) <Route path="Heroes/TwoColumns">
+    function create_default_slot_1(ctx) {
+    	let herotwocolumns;
+    	let current;
+    	herotwocolumns = new Hero_Two_Columns({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(herotwocolumns.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(herotwocolumns, target, anchor);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(herotwocolumns.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(herotwocolumns.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(herotwocolumns, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_default_slot_1.name,
+    		type: "slot",
+    		source: "(272:1) <Route path=\\\"Heroes/TwoColumns\\\">",
     		ctx
     	});
 
@@ -21189,12 +21374,14 @@ var app = (function () {
     	let route20;
     	let t20;
     	let route21;
+    	let t21;
+    	let route22;
     	let current;
 
     	route0 = new Route$1({
     			props: {
     				path: "/Heroes/Fullscreen",
-    				$$slots: { default: [create_default_slot_22] },
+    				$$slots: { default: [create_default_slot_23] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21203,7 +21390,7 @@ var app = (function () {
     	route1 = new Route$1({
     			props: {
     				path: "/Heroes/Halfscreen",
-    				$$slots: { default: [create_default_slot_21] },
+    				$$slots: { default: [create_default_slot_22] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21212,7 +21399,7 @@ var app = (function () {
     	route2 = new Route$1({
     			props: {
     				path: "/Info/1",
-    				$$slots: { default: [create_default_slot_20] },
+    				$$slots: { default: [create_default_slot_21] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21221,7 +21408,7 @@ var app = (function () {
     	route3 = new Route$1({
     			props: {
     				path: "/Info/1-Alt",
-    				$$slots: { default: [create_default_slot_19] },
+    				$$slots: { default: [create_default_slot_20] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21230,7 +21417,7 @@ var app = (function () {
     	route4 = new Route$1({
     			props: {
     				path: "/Info/1-Alt",
-    				$$slots: { default: [create_default_slot_18] },
+    				$$slots: { default: [create_default_slot_19] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21239,7 +21426,7 @@ var app = (function () {
     	route5 = new Route$1({
     			props: {
     				path: "/Info/1-Reversed",
-    				$$slots: { default: [create_default_slot_17] },
+    				$$slots: { default: [create_default_slot_18] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21248,7 +21435,7 @@ var app = (function () {
     	route6 = new Route$1({
     			props: {
     				path: "/Info/Grids",
-    				$$slots: { default: [create_default_slot_16] },
+    				$$slots: { default: [create_default_slot_17] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21257,7 +21444,7 @@ var app = (function () {
     	route7 = new Route$1({
     			props: {
     				path: "/Grids/Responsive",
-    				$$slots: { default: [create_default_slot_15] },
+    				$$slots: { default: [create_default_slot_16] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21266,7 +21453,7 @@ var app = (function () {
     	route8 = new Route$1({
     			props: {
     				path: "/Tabs/Centered",
-    				$$slots: { default: [create_default_slot_14] },
+    				$$slots: { default: [create_default_slot_15] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21275,7 +21462,7 @@ var app = (function () {
     	route9 = new Route$1({
     			props: {
     				path: "/Navbar/Traditional",
-    				$$slots: { default: [create_default_slot_13] },
+    				$$slots: { default: [create_default_slot_14] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21284,7 +21471,7 @@ var app = (function () {
     	route10 = new Route$1({
     			props: {
     				path: "/Footers/Column-4",
-    				$$slots: { default: [create_default_slot_12] },
+    				$$slots: { default: [create_default_slot_13] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21293,7 +21480,7 @@ var app = (function () {
     	route11 = new Route$1({
     			props: {
     				path: "/Grids/Responsive-Info",
-    				$$slots: { default: [create_default_slot_11] },
+    				$$slots: { default: [create_default_slot_12] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21302,7 +21489,7 @@ var app = (function () {
     	route12 = new Route$1({
     			props: {
     				path: "/Grids/Responsive-Info-Icons",
-    				$$slots: { default: [create_default_slot_10] },
+    				$$slots: { default: [create_default_slot_11] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21311,7 +21498,7 @@ var app = (function () {
     	route13 = new Route$1({
     			props: {
     				path: "/Banners/OnlyButton",
-    				$$slots: { default: [create_default_slot_9] },
+    				$$slots: { default: [create_default_slot_10] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21320,7 +21507,7 @@ var app = (function () {
     	route14 = new Route$1({
     			props: {
     				path: "/Banners/Paragraph-Button",
-    				$$slots: { default: [create_default_slot_8] },
+    				$$slots: { default: [create_default_slot_9] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21329,7 +21516,7 @@ var app = (function () {
     	route15 = new Route$1({
     			props: {
     				path: "/Forms/Form-1",
-    				$$slots: { default: [create_default_slot_7] },
+    				$$slots: { default: [create_default_slot_8] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21338,7 +21525,7 @@ var app = (function () {
     	route16 = new Route$1({
     			props: {
     				path: "/Galleries/Basic",
-    				$$slots: { default: [create_default_slot_6] },
+    				$$slots: { default: [create_default_slot_7] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21347,7 +21534,7 @@ var app = (function () {
     	route17 = new Route$1({
     			props: {
     				path: "/Galleries/KNC",
-    				$$slots: { default: [create_default_slot_5] },
+    				$$slots: { default: [create_default_slot_6] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21356,7 +21543,7 @@ var app = (function () {
     	route18 = new Route$1({
     			props: {
     				path: "/Info/Form",
-    				$$slots: { default: [create_default_slot_4] },
+    				$$slots: { default: [create_default_slot_5] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21365,7 +21552,7 @@ var app = (function () {
     	route19 = new Route$1({
     			props: {
     				path: "/Info/Left-Right",
-    				$$slots: { default: [create_default_slot_3] },
+    				$$slots: { default: [create_default_slot_4] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21374,7 +21561,7 @@ var app = (function () {
     	route20 = new Route$1({
     			props: {
     				path: "/contentful/events",
-    				$$slots: { default: [create_default_slot_2] },
+    				$$slots: { default: [create_default_slot_3] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -21383,6 +21570,15 @@ var app = (function () {
     	route21 = new Route$1({
     			props: {
     				path: "/Tabs/Bordered",
+    				$$slots: { default: [create_default_slot_2] },
+    				$$scope: { ctx }
+    			},
+    			$$inline: true
+    		});
+
+    	route22 = new Route$1({
+    			props: {
+    				path: "Heroes/TwoColumns",
     				$$slots: { default: [create_default_slot_1] },
     				$$scope: { ctx }
     			},
@@ -21435,6 +21631,8 @@ var app = (function () {
     			create_component(route20.$$.fragment);
     			t20 = space$1();
     			create_component(route21.$$.fragment);
+    			t21 = space$1();
+    			create_component(route22.$$.fragment);
     			add_location(main, file, 69, 1, 2771);
     		},
     		m: function mount(target, anchor) {
@@ -21482,6 +21680,8 @@ var app = (function () {
     			mount_component(route20, main, null);
     			append_dev(main, t20);
     			mount_component(route21, main, null);
+    			append_dev(main, t21);
+    			mount_component(route22, main, null);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -21639,6 +21839,13 @@ var app = (function () {
     			}
 
     			route21.$set(route21_changes);
+    			const route22_changes = {};
+
+    			if (dirty & /*$$scope*/ 64) {
+    				route22_changes.$$scope = { dirty, ctx };
+    			}
+
+    			route22.$set(route22_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -21664,6 +21871,7 @@ var app = (function () {
     			transition_in(route19.$$.fragment, local);
     			transition_in(route20.$$.fragment, local);
     			transition_in(route21.$$.fragment, local);
+    			transition_in(route22.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
@@ -21689,6 +21897,7 @@ var app = (function () {
     			transition_out(route19.$$.fragment, local);
     			transition_out(route20.$$.fragment, local);
     			transition_out(route21.$$.fragment, local);
+    			transition_out(route22.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -21715,6 +21924,7 @@ var app = (function () {
     			destroy_component(route19);
     			destroy_component(route20);
     			destroy_component(route21);
+    			destroy_component(route22);
     		}
     	};
 

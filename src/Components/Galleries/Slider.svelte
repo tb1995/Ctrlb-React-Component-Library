@@ -34,13 +34,19 @@ let flexWidth = (100 / numberOfColumns) + "%";
 
 
 function rotateLeft() {
-  const transitioningImage = images[images.length - 1];
-  document.getElementById("image"+transitioningImage.id).style.opacity=0
-  images = [images[images.length - 1],...images.slice(0, images.length - 1)]
+  // const transitioningImage = images[images.length - 1];
+  console.log(images)
+  const transitioningImage = images[0];
+  console.log("transitioning image: " + transitioningImage.id)
+  document.getElementById("image"+transitioningImage.id).style.opacity = 0
+  // images = [images[images.length - 1],...images.slice(0, images.length - 1)]
+  images = [...images.slice(1, images.length), images[0]]
 
   setTimeout(() => {
-    document.getElementById("image"+transitioningImage.id).style.opacity=1
-  }, 3300)
+    document.getElementById("image"+transitioningImage.id).style.opacity= 1
+    console.log("Happening")
+  }, 5000)
+
 }
 function rotateRight() {
   images = [...images.slice(1, images.length), images[0]]
@@ -64,7 +70,7 @@ if(shouldAutoplay) {
 <div class="gallery-container" style="width: {gridWidth}">
 
    
-    <div class="image  "
+    <div class="image  image-container"
    >
     {#each images as image (image.id)}
 <img id="image{image.id}"class="image {image.alt ==='ThisIsInvisible123' ? 'invisible-obj' : ''}" src="{image.src}" alt="{image.alt}" style="height: {gridWidth}" animate:flip on:mouseover="{stopAutoplay}" on:mouseout="{startAutoplay}">
@@ -72,13 +78,13 @@ if(shouldAutoplay) {
     </div>
         
  
-    <button id="left" on:click="{rotateLeft}">
-    <!-- <slot name="left-control"> </slot> -->
-      <ChevronLeftIcon />
+    <!-- <button id="left" on:click="{rotateLeft}">
+    <ChevronLeftIcon size={"100"} strokeFill={"#555"}/>
     </button>
     <button id="right" on:click="{rotateRight}">
-      <ChevronRightIcon />
-    </button>
+  <ChevronRightIcon size={"100"} strokeFill={"#555"} />
+
+    </button> -->
 </div>
 
 <style type="text/scss">
@@ -93,6 +99,7 @@ if(shouldAutoplay) {
         margin: auto;
         overflow-x: hidden;
         position: relative;
+        width: 50% !important;
 }
 
 .invisible-obj {
@@ -100,11 +107,17 @@ if(shouldAutoplay) {
         visibility: hidden;
 }
 
+.image-container {
+  margin: 0 auto;
+}
+
 .image {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 20px;
+  height: 45%;
+  width: 45%;
   // -webkit-mask: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
   // mask: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
 }
@@ -126,4 +139,8 @@ button {
   right: 30px;
 }
 
+svg {
+  width: 50px !important;
+  height: 50px !important;
+}
 </style>
