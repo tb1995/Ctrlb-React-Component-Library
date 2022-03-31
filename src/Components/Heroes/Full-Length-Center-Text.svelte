@@ -1,0 +1,148 @@
+<script>
+
+export let h1 = "Bakery. Breakfast. Lunch. Perfection."
+export let p = "Reinvented Pakistani and Indian flavors in a beautiful ambiance.";
+export let ctaText = "Order Now"
+export let ctaUrl = "#"
+
+export let hasCTA = false;
+
+export let backgroundImageUrl = "/img/hero-banner.jpg";
+</script>
+
+<div class="hero-1-container" style="background-image: url({backgroundImageUrl});">
+
+    <div class="text-container">
+    <h1 class="hero-heading">{h1}</h1>
+    <p class="hero-para">{p}</p>
+    {#if hasCTA}
+         <a href="{ctaUrl}" class="hero-cta">{ctaText}</a>
+    {/if}
+    </div>
+</div>
+
+
+<style type="text/scss">
+@import '../public/scss/theme.scss';
+@import '../public/scss/breakpoints.scss';
+
+
+.hero-1-container {
+    height: 100vh;
+    width: 100%;
+    background-image: url("/img/hero-banner.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    filter: brightness(90%);
+    justify-content: center;
+    
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // margin-left: $body-left-margin;
+
+        @include for-size(phone-only) {
+            width: 90%;
+            margin-left: $body-left-margin;
+            margin-right: $body-right-margin;
+            align-items: center;
+
+        }
+
+
+}
+
+.hero-heading {
+    color: $primary;
+    max-width: 80%;
+    text-align: center;
+
+
+    @include for-size(phone-only) {
+                font-size: 60px;
+                width: 100%;
+           }
+
+
+    @include for-size(tablet-portrait-up) {
+                font-size: 50px;
+                max-width: 77%;
+
+
+    }   
+
+    @include for-size(tablet-landscape-up) {
+                font-size: 80px;
+                max-width: 77%;
+        
+
+    }
+
+    @include for-size(desktop-up) {
+                font-size: 100px;
+                max-width: 67%;
+    }
+
+    @include for-size(big-desktop-up) {
+                max-width: 60%; 
+                font-size: 120px;
+    }
+
+}
+
+.hero-para {
+    color: $dark-grey;
+    text-align: center;
+    @include for-size(phone-only) {
+                font-size: 24px;
+                width: 100%;
+    }
+}
+
+.hero-cta {
+  width: 250px;
+  height: 60px;
+  background-color: $primary;
+  color: $white !important;
+  border-radius: 5px;
+  font-size: 24px;
+  z-index: 3;
+  display: block;
+  /* margin: 0 auto; */
+  line-height: 60px;
+  text-align: center;
+}
+
+
+@include for-size(small-phone-only) {
+.hero-heading {
+
+        }
+}
+
+@include for-size(large-mobile-up) {
+
+}
+
+@include for-size(tablet-portrait-up) {
+
+}
+
+@include for-size(tablet-landscape-up) {
+
+}
+
+@include for-size(desktop-up) {
+
+}
+
+@include for-size(big-desktop-up) {
+
+}
+
+</style>

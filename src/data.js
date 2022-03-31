@@ -27,7 +27,15 @@
 					imgUrl: imgDirectory + "hero-halfscreen.png",
 					dependencies: [],
 					listOfProps: []
+				}, {
+					title: "Hero Fullscreen Center Text",
+					description: "Hero Fullscreen with Center Text",
+					url: "/Heroes/FullscreenCenterText",
+					imgUrl: imgDirectory + "hero-halfscreen.png",
+					dependencies: [],
+					listOfProps: []
 				}
+
 			],
 		},
 		{
@@ -208,6 +216,14 @@
                     title: "KnC style 5 columns menu",
                     description: "Simple 5 column Gallery",
                     url: "/Galleries/KNC",
+                    imgUrl: imgDirectory + "Centered-Tabs.png",
+                    dependencies: [],
+                    listOfProps: []
+				},
+				{
+                    title: "Slider Gallery",
+                    description: "Simple Slider Gallery",
+                    url: "/Galleries/Slider",
                     imgUrl: imgDirectory + "Centered-Tabs.png",
                     dependencies: [],
                     listOfProps: []
@@ -434,5 +450,20 @@
 			src: "/img/sample-images/Catering.jpg",
 			alt: "image alt",
 			caption: "Catering"
+		}
+	]
+
+
+
+	export let overlayData = [
+		{
+			backgroundImageUrl: "/img/overlay-banner.img",
+			overlayTitle: "Opening Hours",
+			column1TopText: "KnC Santa Clara",
+			column1MiddleText: "123 Anywhere Street \nSanta Something, CA",
+			column1BottomText: "(415) 555 1234",
+			column2TopText: "Monday to Friday \n11 am - 11 pm",
+			column2MiddleText: "",
+			column2BottomText: "Weekends \n11 am - 12 am",
 		}
 	]

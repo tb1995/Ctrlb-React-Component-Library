@@ -4,7 +4,7 @@ import HeroHalfscreen from "./Components/Hero-Halfscreen.svelte";
 import HeroFullscreen from "./Components/Hero-Fullscreen.svelte";
 import Library from "./Library.svelte";
 import { Router, Route, Link } from "svelte-navigator";
-import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList, fourGrids, images, kncImages} from "./data.js"
+import {masterComponentArray, navbarArray, iconList, responsiveListMoreInfoList, responsiveListIconList, fourGrids, images, kncImages, overlayData} from "./data.js"
 import Info_1 from "./Components/Info-1.svelte";
 import ResponsiveGrid from "./Components/Product-Grid/Responsive-Grid.svelte";
 import Tab from "./Components/Tabs-Spaced/Tab.svelte";
@@ -28,6 +28,8 @@ import LeftRightSection from "./Components/Info-Sections/Left-Right-Section.svel
 import HeroTwoColumns from "./Components/Heroes/Hero-Two-Columns.svelte";
 import TabBorder from "./Components/Tabs-Spaced-Border/Tab-Border.svelte";
 import Slider from "./Components/Galleries/Slider.svelte";
+import FullLengthCenterText from "./Components/Heroes/Full-Length-Center-Text.svelte";
+import InfoOverlay from "./Components/Info-Sections/Info-Overlay.svelte";
 
 
     let componentArray = masterComponentArray
@@ -89,7 +91,11 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 		buttonText="I am a Button"
 		buttonUrl="#"
 	  />
-    </Route>
+	</Route>
+	
+	<Route path="/Heroes/FullscreenCenterText">
+		<FullLengthCenterText />
+	</Route>
 
 	<Route path="/Info/1">
       <Info_1 />
@@ -233,6 +239,17 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 	/>
 	</Route>
 
+		<Route path="/Galleries/Slider">
+			<Slider
+				images = {images}
+				numberOfColumns = {4}
+				objWidth={"200px"}
+				gridWidth={"90%"}
+				shouldAutoplay={true}
+			/>
+
+		</Route>
+
 	<Route path="/Info/Form">
 	<InfoWithForm
 		infoHeading="So much more than just a cafe"
@@ -275,15 +292,20 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 	</main>
 </Router>
 
-<Slider
-	images = {images}
-	numberOfColumns = {4}
-	objWidth={"200px"}
-	gridWidth={"90%"}
-	shouldAutoplay={true}
-/>
 
 <!-- <HeroTwoColumns /> -->
+<InfoOverlay 
+
+	overlayTitle= {"Opening Hours"}
+	column1TopText= {"KnC Santa Clara"}
+	column1MiddleText= {"123 Anywhere Street\r\nSanta Something, CA"}
+	column1BottomText= {"(415) 555 1234"}
+	column2TopText= {`Monday to Friday` + `\n` + `11 am - 11 pm`}
+	column2MiddleText= ""
+	column2BottomText= {"Weekends \n11 am - 12 am"}
+	--backgroundImageUrl = {"url(/img/overlay-banner.jpg)"}
+
+/>
 
 
 
@@ -292,3 +314,13 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 
 	
 </style>
+
+
+<!-- 	backgroundImageUrl = {overlayData.backgroundImageUrl}
+	overlayTitle = {overlayData.overlayTitle}
+	column1TopText = {overlayData.column1TopText}
+	column1MiddleText = {overlayData.column1MiddleText}
+	column1BottomText = {overlayData.column1BottomText}
+	column2TopText = {overlayData.column2TopText}
+	column2MiddleText = {overlayData.column2MiddleText}
+	column2BottomText = {overlayData.column2BottomText} -->
