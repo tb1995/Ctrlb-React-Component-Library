@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "contentful": "^9.1.13",
+    "leaflet": "^1.7.1",
     "sirv-cli": "^2.0.0",
+    "svelte-feather-icons": "^3.5.1",
     "svelte-navigator": "^3.1.5"
   }
 }

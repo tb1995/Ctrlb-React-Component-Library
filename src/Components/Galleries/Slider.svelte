@@ -1,198 +1,146 @@
 <script>
+    import { beforeUpdate, afterUpdate } from 'svelte';
+    import { flip } from 'svelte/animate'
+    import {ChevronLeftIcon, ChevronRightIcon} from 'svelte-feather-icons'
+    export let images;
+    export let gridWidth;
+    export let numberOfColumns;
+    export let shouldAutoplay = false;
+    export let autoplaySpeed = 3000;
 
+    let interval;
+    // numberOfColumns += 1;
+let flexWidth = (100 / numberOfColumns) + "%";
+
+    let dividor = Math.min(images.length, 4)
+    console.log(dividor)
+    let widthOfImage = (100 / numberOfColumns) + "%";
+
+    	beforeUpdate(() => {
+
+    let remainder = images.length % numberOfColumns;
+
+    // for(let i = 0; i < (numberOfColumns - remainder); i++) {
+    //     console.log("Here " + i);
+    //     images.push({
+    //     invisible: true,
+    //     src: "",
+    //     alt: "ThisIsInvisible123",
+    //     id: images.length + i + 1
+    // })
+    // }
+
+    })
+
+
+function rotateLeft() {
+  // const transitioningImage = images[images.length - 1];
+  console.log(images)
+  const transitioningImage = images[0];
+  console.log("transitioning image: " + transitioningImage.id)
+  document.getElementById("image"+transitioningImage.id).style.opacity = 0
+  // images = [images[images.length - 1],...images.slice(0, images.length - 1)]
+  images = [...images.slice(1, images.length), images[0]]
+
+  setTimeout(() => {
+    document.getElementById("image"+transitioningImage.id).style.opacity= 1
+    console.log("Happening")
+  }, 5000)
+
+}
+function rotateRight() {
+  images = [...images.slice(1, images.length), images[0]]
+}
+
+function startAutoplay() {
+  if(shouldAutoplay) {
+    interval = setInterval(rotateLeft, autoplaySpeed)
+  }
+}
+
+function stopAutoplay() {
+  clearInterval(interval);
+}
+
+if(shouldAutoplay) {
+  startAutoplay();
+}
 </script>
 
+<div class="gallery-container" style="width: {gridWidth}">
 
-      <div class="fp-slider-items">
-        <div class="fp-slider-wrapper">
-          <a href="#">
-            <div class="fp-img">
-              <img src="https://images.unsplash.com/photo-1519302959554-a75be0afc82a?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=e21b31e3bddc474a0a13b376d367e2ce" alt="Featured Property" />
-            </div>
-          </a>
-        </div>
-        <div class="fp-slider-wrapper">
-          <a href="#">
-            <div class="fp-img">
-              <img src="https://images.unsplash.com/photo-1534479888607-8978e8243743?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=dcadee71cb7cff203f1497e4ddb97ccb" alt="Featured Property" />
-            </div>
-          </a>
-        </div>
-        <div class="fp-slider-wrapper">
-          <a href="#">
-            <div class="fp-img">
-              <img src="https://images.unsplash.com/photo-1525619526717-37cba4c9c8a6?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=6bf44954af0448e201a664b4b8211c22" alt="Featured Property" />
-            </div>
-          </a>
-        </div>
-        <div class="fp-slider-wrapper">
-          <a href="#">
-            <div class="fp-img">
-              <img src="https://images.unsplash.com/photo-1504396463218-15cec8dfd816?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=8275a6f19d63c736bc4c4cf628137a1b" alt="Featured Property" />
-            </div>
-          </a>
-        </div>
-        <div class="fp-slider-wrapper">
-          <a href="#">
-            <div class="fp-img">
-              <img src="https://images.unsplash.com/photo-1519302959554-a75be0afc82a?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=e21b31e3bddc474a0a13b376d367e2ce" alt="Featured Property" />
-            </div>
-          </a>
-        </div>
-        <div class="fp-slider-wrapper">
-          <a href="#">
-            <div class="fp-img">
-              <img src="https://images.unsplash.com/photo-1534479888607-8978e8243743?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=dcadee71cb7cff203f1497e4ddb97ccb" alt="Featured Property" />
-            </div>
-          </a>
-        </div>
-      </div>
+   
+    <div class="image  image-container"
+   >
+    {#each images as image (image.id)}
+<img id="image{image.id}"class="image {image.alt ==='ThisIsInvisible123' ? 'invisible-obj' : ''}" src="{image.src}" alt="{image.alt}" style="height: {gridWidth}" animate:flip on:mouseover="{stopAutoplay}" on:mouseout="{startAutoplay}">
+           {/each}
+    </div>
+        
+ 
+    <!-- <button id="left" on:click="{rotateLeft}">
+    <ChevronLeftIcon size={"100"} strokeFill={"#555"}/>
+    </button>
+    <button id="right" on:click="{rotateRight}">
+  <ChevronRightIcon size={"100"} strokeFill={"#555"} />
 
+    </button> -->
+</div>
 
 <style type="text/scss">
 @import './public/scss/theme.scss';
 @import './public/scss/breakpoints.scss';
 
-
-a:link, a:visited, a:hover, a:active, a:focus{
-  text-decoration: none;
-  outline: none;
+.gallery-container {
+        display: flex;
+        flex-direction: column;
+        // flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin: auto;
+        overflow-x: hidden;
+        position: relative;
+        width: 50% !important;
 }
 
-
-.fp-wrapper {
-    text-align: center;
-    padding: 50px 0 75px;
+.invisible-obj {
+        height: 0;
+        visibility: hidden;
 }
 
-.fp-slider-wrapper {
-    padding: 7px;
+.image-container {
+  margin: 0 auto;
 }
 
-.fp-slider-wrapper a {
-    display: block;
-    position: relative;
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  height: 45%;
+  width: 45%;
+  // -webkit-mask: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
+  // mask: linear-gradient(to right, transparent, black 40%, black 60%, transparent);
 }
 
-.fp-wrapper h1 {
-    font: 400 40px 'Playfair Display', serif;
-    color: #e1ab35;
-    text-transform: uppercase;
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  background: transparent;
+  border: none
 }
 
-.fp-wrapper span {
-    font: 400 13px/21px 'Roboto', sans-serif;
-    color: #680909;
+#left {
+  left: 30px;
 }
 
-.fp-slider-items.slick-initialized.slick-slider {
-    padding: 38px 0 0;
+#right {
+  right: 30px;
 }
 
-.fp-slider-items button.slick-arrow{
-    display: inline-block;
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    transform: translateY(-40px);
-    font-size:  0;
-    border: none;
-    outline: none;
+svg {
+  width: 50px !important;
+  height: 50px !important;
 }
-.fp-slider-items button.slick-prev.slick-arrow {    
-    left: -40px;
-    background: url(images/arrows-left.png);
-    background-color: red;
-}
-
-.fp-slider-items button.slick-next.slick-arrow {
-    right: -40px;
-    background: url(images/arrow-right.png);
-}
-
-.fp-slider-wrapper .fp-img:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: rgba(153, 126, 67, .30);
-    opacity: 0;
-    outline: 1px solid #ffffff;
-    outline-offset: -10px;
-    -webkit-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -o-transition: all 0.6s;
-    -ms-transition: all 0.6s;
-    transition: all 0.6s;
-}
-
-.fp-slider-wrapper .fp-img:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    opacity: 0;
-    background: rgba(255, 255, 255, .5);
-    -webkit-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -o-transition: all 0.6s;
-    -ms-transition: all 0.6s;
-    transition: all 0.6s;
-}
-
-.fp-slider-wrapper:hover .fp-img:before, 
-.fp-slider-wrapper:hover .fp-img:after {
-    opacity: 1;
-}
-
-#ft-title{
-    font: 500 13px/21px 'Roboto', sans-serif;
-    color: #680909;
-    text-transform: uppercase;
-    letter-spacing: 0.20em;
-}
-
-.fp-img {
-    position: relative;
-}
-
-.slick-slide img{
-    display: inline-block;
-    width: 100%;
-    height: auto;
-}
-
-.slider-details {
-    padding: 20px 0;
-    opacity: 0;
-    transition: all .3s ease;
-}
-        
-.fp-slider-wrapper:hover .slider-details {
-    opacity: 1;
-}
-
-.slider-details strong{
-    font: 500 20px 'Roboto', sans-serif;
-    color: #2f2f2f;
-}
-
-.slider-details a{
-    font: 500 12px 'Roboto', sans-serif;
-    color: #680909;
-    line-height: 2.5em;
-}
-
-.slick-track * {
-  outline: none;
-}
-
 </style>

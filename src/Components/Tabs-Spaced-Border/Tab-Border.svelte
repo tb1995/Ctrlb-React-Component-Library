@@ -29,7 +29,7 @@
 
 ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 0;
     list-style-type: none;
 }
@@ -39,13 +39,22 @@ li {
     font-size: 18px;
     color: $dark-grey;
     cursor: pointer;
-    width: 200px;
+    border: 1px solid #333;
+    width: 160px;
+    height: 50px;
     text-align: center;
+    line-height: 50px;
+}
+
+li > div {
+    font-size: 14px;
 }
 
 .active {
-    color: $primary;
-    border-bottom: 2px solid $primary;
-    padding-bottom: 8px;
+    background-color: $primary;
+    // color: $white;
+    border: 1px solid $primary;
+    font-weight: bold;
+
 }
 </style>
