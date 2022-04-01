@@ -269,6 +269,24 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 
 	</Route>
 
+	<Route path="/Info/Overlay">
+		
+		<InfoOverlay 
+
+		overlayTitle= {"Opening Hours"}
+		column1TopText= {"KnC Santa Clara"}
+		column1MiddleText= {"123 Anywhere Street\r\nSanta Something, CA"}
+		column1BottomText= {"(415) 555 1234"}
+		column2TopText= {`Monday to Friday` + `\n` + `11 am - 11 pm`}
+		column2MiddleText= ""
+		column2BottomText= {"Weekends \n11 am - 12 am"}
+		--backgroundImageUrl = {"url(/img/overlay-banner.jpg)"}
+
+	/>
+
+
+	</Route>
+
 
 	<Route path="/contentful/events">
 	<ContentfulEvents
@@ -294,18 +312,7 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 
 
 <!-- <HeroTwoColumns /> -->
-<InfoOverlay 
 
-	overlayTitle= {"Opening Hours"}
-	column1TopText= {"KnC Santa Clara"}
-	column1MiddleText= {"123 Anywhere Street\r\nSanta Something, CA"}
-	column1BottomText= {"(415) 555 1234"}
-	column2TopText= {`Monday to Friday` + `\n` + `11 am - 11 pm`}
-	column2MiddleText= ""
-	column2BottomText= {"Weekends \n11 am - 12 am"}
-	--backgroundImageUrl = {"url(/img/overlay-banner.jpg)"}
-
-/>
 
 
 

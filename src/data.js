@@ -117,6 +117,14 @@
                     imgUrl: imgDirectory + "info-1.png",
                     dependencies: [],
                     listOfProps: []
+				},
+				{
+                    title: "Info Overlay",
+                    description: "Overlay over an image",
+                    url: "/Info/Overlay",
+                    imgUrl: imgDirectory + "info-1.png",
+                    dependencies: [],
+                    listOfProps: []
                 }
             ]
 		},
