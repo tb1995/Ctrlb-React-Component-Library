@@ -125,6 +125,14 @@
                     imgUrl: imgDirectory + "info-1.png",
                     dependencies: [],
                     listOfProps: []
+				},
+				{
+                    title: "Info SideImage",
+                    description: "Info section with an image strip on the side",
+                    url: "/Info/SideImage",
+                    imgUrl: imgDirectory + "info-1.png",
+                    dependencies: [],
+                    listOfProps: []
                 }
             ]
 		},

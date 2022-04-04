@@ -30,6 +30,8 @@ import TabBorder from "./Components/Tabs-Spaced-Border/Tab-Border.svelte";
 import Slider from "./Components/Galleries/Slider.svelte";
 import FullLengthCenterText from "./Components/Heroes/Full-Length-Center-Text.svelte";
 import InfoOverlay from "./Components/Info-Sections/Info-Overlay.svelte";
+import InfoSideImage from "./Components/Info-Sections/Info-Side-Image.svelte";
+import InfoKnCMenu from "./Components/Info-Sections/Info-KnC-Menu.svelte";
 
 
     let componentArray = masterComponentArray
@@ -269,10 +271,8 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 
 	</Route>
 
-	<Route path="/Info/Overlay">
-		
+	<Route path="/Info/Overlay">	
 		<InfoOverlay 
-
 		overlayTitle= {"Opening Hours"}
 		column1TopText= {"KnC Santa Clara"}
 		column1MiddleText= {"123 Anywhere Street\r\nSanta Something, CA"}
@@ -283,9 +283,15 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 		--backgroundImageUrl = {"url(/img/overlay-banner.jpg)"}
 
 	/>
-
-
 	</Route>
+
+	<Route path="/Info/SideImage">
+		<InfoSideImage
+		--backgroundImageUrl= {"url(/img/6.jpg)"}
+		--backgroundImageAltUrl= {"url(/img/7.jpg)"}
+		/>
+	</Route>
+
 
 
 	<Route path="/contentful/events">
@@ -313,6 +319,7 @@ const res = client.getEntries({content_type: 'events'}).then(function (event) {
 
 <!-- <HeroTwoColumns /> -->
 
+<InfoKnCMenu />
 
 
 
